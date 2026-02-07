@@ -424,6 +424,86 @@
       "spec": "specs/search-and-query.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "BA-001",
+      "title": "Set up Deno project with deno.json config",
+      "description": "Create deno.json with compiler options, task definitions (dev, build, preview, check, test, lint, fmt), import map aliases ($lib), and nodeModulesDir setting.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-002",
+      "title": "Create SvelteKit project structure",
+      "description": "Set up svelte.config.js, vite.config.ts, app.html, and the directory skeleton: src/lib/server/db, src/lib/server/auth, src/lib/server/middleware, src/lib/server/services, src/lib/models, src/lib/utils, src/routes/api/v1.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-003",
+      "title": "Implement app.d.ts with Locals type declarations",
+      "description": "Define the App.Locals interface with requestId and optional user fields, establishing the typed contract for SvelteKit's event.locals.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-004",
+      "title": "Implement request ID middleware hook",
+      "description": "Create the requestId handle hook in hooks.server.ts that generates a ULID per request, attaches it to event.locals.requestId, and sets the X-Request-Id response header.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-005",
+      "title": "Implement AppError class hierarchy",
+      "description": "Create src/lib/models/errors.ts with AppError base class and subclasses: NotFoundError, ValidationError, ConflictError, AuthError. Each carries a code, message, HTTP status, and optional details.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-006",
+      "title": "Implement withErrorHandling route wrapper",
+      "description": "Create the withErrorHandling utility in src/lib/server/middleware/error-handler.ts that catches AppError instances in route handlers and converts them to JSON error responses with the correct status code.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-007",
+      "title": "Implement response envelope helpers",
+      "description": "Create src/lib/utils/response.ts with success(), listSuccess(), and errorResponse() functions that produce the standard JSON response envelope with requestId and pagination meta.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "BA-008",
+      "title": "Implement environment config loader",
+      "description": "Create src/lib/server/config.ts that reads environment variables (DATABASE_PATH, SESSION_COOKIE, SESSION_MAX_AGE, BCRYPT_COST, NODE_ENV) with typed defaults and throws on missing required values.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "BA-009",
+      "title": "Implement handleError hook for unexpected errors",
+      "description": "Add the handleError export to hooks.server.ts that logs the full error server-side with the requestId and returns a sanitized error response to the client.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "BA-010",
+      "title": "Set up test directory structure and conventions",
+      "description": "Create tests/unit and tests/integration directories. Add a sample test file verifying the Deno test runner works with @std/assert. Document test naming conventions.",
+      "spec": "specs/backend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }

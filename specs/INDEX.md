@@ -15,7 +15,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 
 ### Backend
 
-- [ ] `specs/backend-architecture.md` — Runtime setup (Deno), project structure, API layer design, middleware, error handling conventions
+- [x] `specs/backend-architecture.md` — Runtime setup (Deno), project structure, API layer design, middleware, error handling conventions
 - [x] `specs/database.md` — Database choice, schema design, migrations strategy, indexing for tag-based queries
 - [x] `specs/api-routes.md` — REST/RPC endpoint definitions, request/response shapes, auth requirements per route
 - [x] `specs/auth.md` — Authentication and authorization strategy, session management, user accounts
