@@ -24,7 +24,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/recipe-import.md` — Website recipe import pipeline: URL parsing, structured data extraction (JSON-LD, microdata), fallback scraping, normalization to internal format
 - [x] `specs/ocr-pipeline.md` — Image upload, OCR processing (engine choice), text extraction, recipe parsing from raw OCR output, rights attestation flow
 - [ ] `specs/recommendation-engine.md` — Recommendation approach (content-based, collaborative, hybrid), input signals (collection, preferences, query), ranking, cold-start handling
-- [ ] `specs/shopping-list-engine.md` — Ingredient parsing and normalization, unit conversion, recipe scaling math, multi-recipe aggregation, deduplication logic
+- [x] `specs/shopping-list-engine.md` — Ingredient parsing and normalization, unit conversion, recipe scaling math, multi-recipe aggregation, deduplication logic
 
 ### Frontend
 

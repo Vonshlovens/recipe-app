@@ -688,6 +688,94 @@
       "spec": "specs/ocr-pipeline.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "SLE-001",
+      "title": "Implement ingredient line parser",
+      "description": "Build the parser that transforms raw ingredient lines from Markdown into ParsedIngredient objects: extract quantity (integers, decimals, fractions, mixed numbers, ranges), unit, name, prep notes, and parenthetical notes.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-002",
+      "title": "Define shopping list TypeScript types",
+      "description": "Create TypeScript interfaces for ParsedIngredient, ShoppingListRequest, ShoppingList, ShoppingListItem, ShoppingListRecipeRef, and ScalingRequest in src/lib/models/shopping-list.ts.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-003",
+      "title": "Build unit dictionary and normalizer",
+      "description": "Create the unit dictionary mapping aliases to canonical unit names (tsp, tbsp, cup, oz, lb, g, kg, ml, l, etc.) with case-insensitive matching. Classify each unit by type (volume, weight, count).",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-004",
+      "title": "Implement unit conversion logic",
+      "description": "Build within-type unit conversion functions for volume (tsp→tbsp→cup, ml→l) and weight (oz→lb, g→kg). Apply threshold-based upsizing (e.g., 3 tsp → 1 tbsp, 16 oz → 1 lb).",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-005",
+      "title": "Implement recipe scaling math",
+      "description": "Build the scaling module that adjusts ingredient quantities based on target vs. default servings. Handle null quantities, enforce 0.25×–10× scaling limits, and round to friendly fractions.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-006",
+      "title": "Implement friendly fraction formatter",
+      "description": "Build a utility that converts decimal quantities to display strings using common fractions (¼, ⅓, ½, ⅔, ¾) and mixed numbers (1 ½, 2 ¼). Fall back to 2 decimal places for non-standard values.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SLE-007",
+      "title": "Implement ingredient name normalizer for deduplication",
+      "description": "Build name normalization: lowercase, trim whitespace, strip articles (a/an/the), basic singularization (suffix-based), and remove common modifiers (fresh, dried, frozen, organic, large, small, etc.).",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-008",
+      "title": "Implement multi-recipe aggregation and deduplication",
+      "description": "Build the aggregation pipeline: group parsed ingredients by normalized name, merge quantities with compatible units, keep incompatible units as separate line items, and handle null-quantity merging rules.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-009",
+      "title": "Implement shopping list service orchestrator",
+      "description": "Build shopping-list-service.ts that orchestrates the full pipeline: resolve recipes → parse ingredients → scale → normalize names → aggregate → format output. Handle errors at each stage.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-010",
+      "title": "Implement POST /api/v1/shopping-list endpoint",
+      "description": "Create the SvelteKit route at src/routes/api/v1/shopping-list/+server.ts. Require auth, validate request body (items array, servings, limits), call shopping list service, return ShoppingList response.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLE-011",
+      "title": "Write tests for shopping list engine",
+      "description": "Test ingredient parsing (all quantity formats, edge cases, unparseable lines), unit normalization, unit conversion, scaling math, fraction formatting, name normalization, dedup/aggregation rules, and end-to-end shopping list service.",
+      "spec": "specs/shopping-list-engine.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
