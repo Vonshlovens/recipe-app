@@ -2448,6 +2448,94 @@
       "spec": "specs/feature-shopping-list.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FMP-001",
+      "title": "Define MealPlan and MealPlanEntry TypeScript types",
+      "description": "Create TypeScript interfaces for MealPlan and MealPlanEntry as defined in the spec: weekId, userId, entries array, day/slot enums, servings, timestamps.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-002",
+      "title": "Create meal plan database schema and migrations",
+      "description": "Design and create the meal_plans and meal_plan_entries tables with appropriate indexes on userId+weekId. Add migration scripts.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-003",
+      "title": "Implement meal plan CRUD API endpoints",
+      "description": "Build GET /api/v1/meal-plan/{weekId}, PUT /api/v1/meal-plan/{weekId}, PATCH /api/v1/meal-plan/{weekId}/entries/{entryId}, and DELETE /api/v1/meal-plan/{weekId} with auth, validation, and rate limiting.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-004",
+      "title": "Implement duplicate week API endpoint",
+      "description": "Build POST /api/v1/meal-plan/{weekId}/duplicate that copies all entries to a target week. Validate targetWeekId is a valid ISO Monday date.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FMP-005",
+      "title": "Build weekly calendar grid UI component",
+      "description": "Create the 7-day calendar grid with Mon-Sun columns and Breakfast/Lunch/Dinner/Snack rows. Include week navigation arrows and date range header. Use role=grid for accessibility.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-006",
+      "title": "Implement recipe search popover for adding to cells",
+      "description": "Build the '+' button in empty cells that opens a recipe search popover with autocomplete (debounced 300ms). Handle max 3 recipes per cell and duplicate prevention within a cell.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-007",
+      "title": "Implement drag-and-drop for meal plan entries",
+      "description": "Add drag-and-drop support for moving recipes between cells. Handle full-cell rejection with visual feedback. Support touch devices via long-press. Provide keyboard arrow-key alternative.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FMP-008",
+      "title": "Implement per-entry servings scaling",
+      "description": "Add ScalingControl to each recipe in a cell for adjusting servings (0.25x-10x). Save changes immediately via PATCH endpoint.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FMP-009",
+      "title": "Implement shopping list integration from meal plan",
+      "description": "Add 'Generate Shopping List' button that collects all recipes and servings from the current week and navigates to /shopping-list with pre-populated query parameters. Disable when plan is empty.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FMP-010",
+      "title": "Implement duplicate week and clear week flows",
+      "description": "Build Duplicate Week button with target week date picker and overwrite confirmation. Build Clear button with confirmation dialog when plan has entries.",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FMP-011",
+      "title": "Write tests for meal planning feature",
+      "description": "Test calendar rendering, recipe add/remove, drag-and-drop, servings scaling, shopping list generation, duplicate week, clear week, deleted recipe handling, auth redirect, and accessibility (grid roles, keyboard nav, aria-labels).",
+      "spec": "specs/feature-meal-planning.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }

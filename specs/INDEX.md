@@ -57,3 +57,4 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/feature-ocr-capture.md` — Full feature spec for OCR recipe capture: image requirements, attestation copy, accuracy expectations, edit flow
 - [x] `specs/feature-recommendations.md` — Full feature spec for recipe recommendations: personalization inputs, display, refresh behavior
 - [x] `specs/feature-shopping-list.md` — Full feature spec for shopping lists: scaling, multi-recipe merge, ingredient grouping, export options
+- [x] `specs/feature-meal-planning.md` — Full feature spec for weekly meal planning: calendar view, recipe assignment, drag-and-drop scheduling, grocery integration
