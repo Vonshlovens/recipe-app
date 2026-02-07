@@ -2048,6 +2048,86 @@
       "spec": "specs/error-handling.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FTQ-001",
+      "title": "Implement three-state tag toggle component",
+      "description": "Build a tag toggle component with three states (unselected, included, excluded) with green/red visual indicators and accessible aria-labels.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FTQ-002",
+      "title": "Fetch and display available tags in filter sidebar",
+      "description": "Fetch tags from GET /api/v1/tags on mount, display in collapsible accordion groups (cuisine, meal, diet, technique, custom) with usage counts.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FTQ-003",
+      "title": "Serialize tag filter state to URL query parameters",
+      "description": "Sync include/exclude tag selections to ?include= and ?exclude= URL params. Reset to page 1 on filter change. Support browser back/forward navigation.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FTQ-004",
+      "title": "Build active filters chip bar",
+      "description": "Display active include/exclude filters as removable chips between search bar and results. Include chips use default styling, exclude chips use red/destructive styling.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-005",
+      "title": "Implement clear-all and clear-individual filter actions",
+      "description": "Add clear-all button to reset all tag filters. Add × button on each chip to remove a single filter. Both actions trigger re-query.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-006",
+      "title": "Implement debounce and request cancellation for rapid filter toggling",
+      "description": "Cancel in-flight query requests when filters change rapidly. Ensure only the latest query result is displayed to prevent race conditions.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-007",
+      "title": "Handle tag query error states in UI",
+      "description": "Display error banner for API failures, handle malformed URL params gracefully with 'Invalid filters' message and 'Clear filters' CTA.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-008",
+      "title": "Handle empty and zero-result states for tag queries",
+      "description": "Show 'No recipes match these filters' with a 'Clear filters' CTA when tag query returns zero results. Handle tags with zero usage counts.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-009",
+      "title": "Combine text search with tag filters",
+      "description": "When both search text (q) and tag filters are active, send combined request to /api/v1/recipes/query with q parameter. Preserve relevance ranking.",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FTQ-010",
+      "title": "Write tests for tag query feature",
+      "description": "Test three-state toggle cycling, URL serialization/deserialization, filter chip rendering, clear actions, combined search+filter queries, edge cases (contradictory tags, malformed params).",
+      "spec": "specs/feature-tag-query.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
