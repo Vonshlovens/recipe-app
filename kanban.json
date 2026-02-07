@@ -1920,6 +1920,70 @@
       "spec": "specs/deployment.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "TS-001",
+      "title": "Configure Deno test runner for backend unit tests",
+      "description": "Set up deno test tasks in deno.json (test, test:unit, test:integration, test:coverage). Create __tests__/ directory conventions and verify deno test runs successfully.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-002",
+      "title": "Set up Vitest and Testing Library for frontend components",
+      "description": "Install and configure Vitest with @testing-library/svelte for SvelteKit component tests. Add vitest.config.ts with Svelte transform and jsdom environment.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-003",
+      "title": "Set up Playwright for E2E testing",
+      "description": "Install Playwright, create playwright.config.ts with Chromium and Firefox projects, configure webServer to start dev server, set up screenshot-on-failure and retry policy.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-004",
+      "title": "Create shared test fixtures and factory functions",
+      "description": "Create src/lib/test-fixtures/ with recipes.ts, users.ts, and ingredients.ts. Implement createMockRecipe, createMockUser, and createMockIngredient factory functions with sensible defaults and override support.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-005",
+      "title": "Set up test database utilities",
+      "description": "Create setupTestDb and teardownTestDb helpers that initialize an in-memory SQLite database, run migrations, and provide table truncation between tests.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-006",
+      "title": "Create E2E seed data script",
+      "description": "Build a seed script (deno task test:seed) that populates the test database with known users, recipes, and tags for E2E test runs.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "TS-007",
+      "title": "Write E2E tests for critical user flows",
+      "description": "Write Playwright tests covering: user registration/login, create recipe, import recipe from URL, search and filter, generate shopping list, and view recommendations.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "TS-008",
+      "title": "Add test and coverage steps to CI pipeline",
+      "description": "Update .github/workflows/deploy.yml to run unit tests, integration tests, E2E tests (post-build), and upload coverage report as an artifact. Configure coverage threshold warnings on PRs.",
+      "spec": "specs/testing-strategy.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
