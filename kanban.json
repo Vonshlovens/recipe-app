@@ -2536,6 +2536,94 @@
       "spec": "specs/feature-meal-planning.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FC-001",
+      "title": "Create Collection and CollectionEntry database tables",
+      "description": "Add migration for collections table (id, userId, name, description, shareToken, createdAt, updatedAt) and collection_entries table (id, collectionId, recipeId, position, addedAt). Add indexes on userId and shareToken.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-002",
+      "title": "Define Collection TypeScript types",
+      "description": "Create TypeScript interfaces for Collection and CollectionEntry matching the data model in the spec.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-003",
+      "title": "Implement collection CRUD API endpoints",
+      "description": "Build GET /api/v1/collections (list, paginated), POST (create), GET /:id (detail with recipes), PATCH /:id (update name/description/sharing), DELETE /:id. All require auth and ownership checks.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-004",
+      "title": "Implement add/remove recipe endpoints for collections",
+      "description": "Build POST /api/v1/collections/:id/recipes (add recipe, append to end) and DELETE /api/v1/collections/:id/recipes/:recipeId (remove). Handle duplicate add as no-op. Enforce 200 recipe cap.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-005",
+      "title": "Implement collection reorder endpoint",
+      "description": "Build PATCH /api/v1/collections/:id/reorder accepting an ordered array of recipeIds. Update position values in collection_entries.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FC-006",
+      "title": "Implement share token generation and public collection endpoint",
+      "description": "Generate cryptographically random 22-char base62 share tokens. Build GET /api/v1/collections/shared/:shareToken (no auth). Invalidate token when sharing is disabled.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FC-007",
+      "title": "Build collections list page UI",
+      "description": "Create /collections page showing user's collections sorted by last updated. Each card shows name, recipe count, and thumbnail mosaic (up to 4 images). Add sort toggle for alphabetical.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-008",
+      "title": "Build collection detail page UI",
+      "description": "Create /collections/:id page with inline-editable name, description, recipe list with drag-and-drop reorder, remove buttons with undo toast, and share toggle.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-009",
+      "title": "Build 'Add to Collection' popover on recipe pages",
+      "description": "Add 'Add to Collection' button on recipe detail pages and recipe card overflow menus. Popover lists user's collections with checkboxes. Pre-check collections already containing the recipe. Handle empty state with 'Create New Collection' link.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FC-010",
+      "title": "Build shared collection read-only view",
+      "description": "Create /collections/shared/:shareToken page showing collection in read-only mode. No edit controls, no auth required. Show 404 for invalid or disabled tokens.",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FC-011",
+      "title": "Write tests for collections feature",
+      "description": "Test CRUD operations, add/remove recipes, reorder, share token generation/invalidation, public link access, deleted recipe handling, duplicate add no-op, 200 recipe cap, auth and ownership checks, and accessibility (list roles, keyboard drag-and-drop, focus trapping).",
+      "spec": "specs/feature-collections.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }

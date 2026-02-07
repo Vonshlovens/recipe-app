@@ -58,3 +58,4 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/feature-recommendations.md` — Full feature spec for recipe recommendations: personalization inputs, display, refresh behavior
 - [x] `specs/feature-shopping-list.md` — Full feature spec for shopping lists: scaling, multi-recipe merge, ingredient grouping, export options
 - [x] `specs/feature-meal-planning.md` — Full feature spec for weekly meal planning: calendar view, recipe assignment, drag-and-drop scheduling, grocery integration
+- [x] `specs/feature-collections.md` — Full feature spec for recipe collections: user-created groups, ordering, sharing via public link, collection browsing
