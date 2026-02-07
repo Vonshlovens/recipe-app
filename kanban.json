@@ -776,6 +776,134 @@
       "spec": "specs/shopping-list-engine.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "REC-001",
+      "title": "Write user_preferences and recipe_interactions migrations",
+      "description": "Create migration files for the user_preferences table (user_id, pref_type, tag_group, tag_value) and recipe_interactions table (id, user_id, recipe_id, action, created_at) with indexes.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-002",
+      "title": "Define recommendation TypeScript types",
+      "description": "Create TypeScript interfaces for TagFrequencyProfile, TagCount, UserPreferences, RecommendationQuery, ScoredRecipe, and score breakdown in src/lib/models/recommendation.ts.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-003",
+      "title": "Implement tag frequency profile builder",
+      "description": "Build the module that queries recipe_tags for a user's collection and returns a TagFrequencyProfile with per-tag counts and frequencies.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-004",
+      "title": "Implement user preferences CRUD",
+      "description": "Build functions to read, upsert, and delete user preferences (boosts and suppressions) in the user_preferences table. Enforce max 20 total and no contradictions.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-005",
+      "title": "Implement tag similarity scorer",
+      "description": "Build the tag similarity scoring function that compares a candidate recipe's tags against the user's tag frequency profile and returns a 0–1 score.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-006",
+      "title": "Implement preference boost scorer",
+      "description": "Build the preference boost/suppression scoring function: +0.15 per boosted tag (capped at +1.0), -0.5 per suppressed tag (floored at -1.0).",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-007",
+      "title": "Implement freshness bonus and composite score calculator",
+      "description": "Build the freshness bonus function (0.1 decaying over 30 days) and the composite score calculator that combines tag similarity (0.6), preference boost (0.25), freshness (0.1), and diversity penalty (0.05).",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-008",
+      "title": "Implement diversity re-ranking",
+      "description": "Build the greedy diversity re-ranker that penalizes candidates sharing too many tags with already-selected recommendations, applied over a 3x candidate pool.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "REC-009",
+      "title": "Implement cold-start fallback strategies",
+      "description": "Build cold-start handling: return popular recipes (by view count) for new users, apply confidence discount for sparse collections (< 10 recipes), and supplement with popular recipes to fill the set.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "REC-010",
+      "title": "Implement reason generation",
+      "description": "Build the reason generator that produces human-readable explanation strings from the scoring breakdown using the defined templates.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "REC-011",
+      "title": "Implement recommendation service orchestrator",
+      "description": "Build recommendation-service.ts that orchestrates the full pipeline: build profile → apply query filters → score candidates → diversify → generate reasons → return ranked results.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-012",
+      "title": "Implement GET /api/v1/recommendations endpoint",
+      "description": "Create the SvelteKit route for personalized recommendations. Require auth, parse query params (limit, difficulty, maxTime, excludeOwned, tags, mood), call recommendation service, return scored results.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-013",
+      "title": "Implement GET /api/v1/recommendations/profile endpoint",
+      "description": "Create the endpoint that returns the user's computed tag frequency profile and current preferences.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "REC-014",
+      "title": "Implement PUT /api/v1/recommendations/preferences endpoint",
+      "description": "Create the endpoint to update user taste preferences (boosts and suppressions). Validate constraints and return updated preferences.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "REC-015",
+      "title": "Implement POST /api/v1/recipes/:slug/interact endpoint",
+      "description": "Create the endpoint to record user interactions (view, save) with recipes. Require auth, validate action, store in recipe_interactions, return 204.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "REC-016",
+      "title": "Write tests for recommendation engine",
+      "description": "Test tag frequency profile building, preference CRUD and validation, tag similarity scoring, preference boost scoring, composite score calculation, diversity re-ranking, cold-start fallbacks, reason generation, and end-to-end recommendation service.",
+      "spec": "specs/recommendation-engine.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
