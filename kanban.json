@@ -1568,6 +1568,94 @@
       "spec": "specs/ocr-flow.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "SLU-001",
+      "title": "Build RecipePicker component with search autocomplete",
+      "description": "Create RecipePicker.svelte with debounced search input (300ms) querying GET /api/v1/recipes, dropdown results with title/difficulty/servings, click-to-add, duplicate prevention, and 20-recipe limit enforcement.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-002",
+      "title": "Build SelectedRecipeCard component",
+      "description": "Create SelectedRecipeCard.svelte displaying recipe title, remove button, ScalingControl for servings adjustment, default servings label, and disabled increment/decrement at 0.25x-10x scaling limits.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-003",
+      "title": "Build ShoppingListView component",
+      "description": "Create ShoppingListView.svelte rendering the combined shopping list with header (recipe count, item count), checkable items, checked count display, Uncheck All button, and source recipes reference section.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-004",
+      "title": "Build ShoppingListItem component with check-off interaction",
+      "description": "Create ShoppingListItem.svelte with native checkbox, formatted quantity/unit, ingredient name, source recipe list, line-through/opacity styling when checked, and move-to-bottom behavior for checked items.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-005",
+      "title": "Build RecipeSummaryBar collapsed view",
+      "description": "Create RecipeSummaryBar.svelte showing collapsed recipe selection summary after list generation with recipe count, Edit Recipes toggle to expand selection panel.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SLU-006",
+      "title": "Implement shopping list page with step state machine",
+      "description": "Create +page.svelte for /shopping-list with runes-based step state (select -> loading -> list). Wire Generate button to POST /api/v1/shopping-list, handle success (show ShoppingListView) and errors (toast messages).",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-007",
+      "title": "Implement print view for shopping list",
+      "description": "Add @media print CSS rules to ShoppingListView: hide Navbar, Footer, action buttons, checked items. Include list title with date and source recipes section. Trigger via window.print().",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SLU-008",
+      "title": "Implement clear and edit-recipes flows",
+      "description": "Wire Clear button with ConfirmDialog when items are checked. Implement Edit Recipes toggle that re-expands recipe selection panel and triggers list regeneration on changes, resetting check state.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SLU-009",
+      "title": "Implement responsive layout for shopping list page",
+      "description": "Build desktop two-column layout (320px sidebar + fluid list), tablet stacked layout with collapsible selection, and mobile single-column layout with larger touch targets and tap-to-show sources.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-010",
+      "title": "Add auth guard to shopping list route",
+      "description": "Create +page.server.ts for /shopping-list that redirects unauthenticated users to /auth/login.",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SLU-011",
+      "title": "Write tests for shopping list UI",
+      "description": "Test recipe search debounce and autocomplete, duplicate recipe prevention, scaling control limits, Generate button disabled state, shopping list item check-off and sorting, Uncheck All, clear flow with confirm dialog, edit-recipes regeneration, print view visibility, error handling (toast messages), and accessibility (aria-live, role=listbox, keyboard nav).",
+      "spec": "specs/shopping-list-ui.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
