@@ -600,6 +600,94 @@
       "spec": "specs/recipe-import.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "OCR-001",
+      "title": "Implement image validator for OCR pipeline",
+      "description": "Build the image validation module: check magic bytes for JPEG/PNG/WebP/HEIC, enforce 10 MB max file size, validate dimensions (min 200x200, max 8000x8000).",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-002",
+      "title": "Implement image preprocessor",
+      "description": "Build the image preprocessing module using sharp: auto-orient from EXIF, convert to grayscale, resize if longest edge exceeds 4000px, normalize HEIC to PNG.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-003",
+      "title": "Implement Tesseract.js OCR engine wrapper",
+      "description": "Create the OCR engine module: initialize Tesseract.js worker with LSTM mode, configure language support, process images with 60-second timeout, return full text and confidence score.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-004",
+      "title": "Implement OCR text cleaner",
+      "description": "Build the text cleanup module: normalize whitespace, apply common OCR substitution corrections (l→1, O→0, rn→m, etc.) in recipe context, remove page artifacts like headers/footers and page numbers.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-005",
+      "title": "Implement recipe text parser",
+      "description": "Build the recipe parser that identifies title, ingredients, instructions, servings, and time values from cleaned OCR text using heuristic section detection. Assign confidence levels to each section.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-006",
+      "title": "Implement OCR draft normalizer",
+      "description": "Build the normalizer that transforms parsed OCR output into a draft Recipe object: generate ULID/slug/timestamps, set source.type to 'ocr', build Markdown body, infer tags from title/ingredients, run validation, collect warnings.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-007",
+      "title": "Define OCR TypeScript types",
+      "description": "Create TypeScript interfaces for OcrDraft, OcrWarning, OcrParseResult, and RightsAttestation in src/lib/models/ocr-types.ts.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-008",
+      "title": "Implement rights attestation validation",
+      "description": "Add attestation enforcement to POST /api/v1/recipes: when source.type is 'ocr', require the attestation field with a valid attestationType. Return 400 OCR_ATTESTATION_REQUIRED if missing.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-009",
+      "title": "Implement OCR service orchestrator",
+      "description": "Build ocr-service.ts that orchestrates the full pipeline: validate image → preprocess → OCR → clean text → parse → normalize to draft. Handle errors at each stage and return OcrDraft or typed error.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-010",
+      "title": "Implement POST /api/v1/recipes/ocr endpoint",
+      "description": "Create the SvelteKit route at src/routes/api/v1/recipes/ocr/+server.ts. Require auth, accept multipart/form-data with image and optional language, call OCR service, return OcrDraft as 200 response or error.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OCR-011",
+      "title": "Write tests for OCR pipeline",
+      "description": "Test image validation (valid formats, oversized, too small, corrupt), image preprocessing, OCR engine wrapper (mock Tesseract), text cleaner substitutions, recipe parser section detection, normalizer, attestation enforcement, and end-to-end OCR service.",
+      "spec": "specs/ocr-pipeline.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }

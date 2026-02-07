@@ -22,7 +22,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/recipe-data-model.md` — Canonical recipe schema, YAML frontmatter spec, markdown body format, tag taxonomy, validation rules
 - [x] `specs/search-and-query.md` — Tag-based query engine, filtering logic (AND/OR/NOT), full-text search, sorting, pagination
 - [x] `specs/recipe-import.md` — Website recipe import pipeline: URL parsing, structured data extraction (JSON-LD, microdata), fallback scraping, normalization to internal format
-- [ ] `specs/ocr-pipeline.md` — Image upload, OCR processing (engine choice), text extraction, recipe parsing from raw OCR output, rights attestation flow
+- [x] `specs/ocr-pipeline.md` — Image upload, OCR processing (engine choice), text extraction, recipe parsing from raw OCR output, rights attestation flow
 - [ ] `specs/recommendation-engine.md` — Recommendation approach (content-based, collaborative, hybrid), input signals (collection, preferences, query), ranking, cold-start handling
 - [ ] `specs/shopping-list-engine.md` — Ingredient parsing and normalization, unit conversion, recipe scaling math, multi-recipe aggregation, deduplication logic
 
