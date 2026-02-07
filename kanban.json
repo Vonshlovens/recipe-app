@@ -1216,6 +1216,86 @@
       "spec": "specs/recipe-editor.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "RV-001",
+      "title": "Build recipe viewer page with data loading",
+      "description": "Create +page.server.ts that fetches the recipe by slug via GET /api/v1/recipes/:slug and passes the full recipe object plus isOwner flag. Create +page.svelte composing RecipeHeader, IngredientList, InstructionSteps, and Notes sections.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RV-002",
+      "title": "Implement ingredient scaling state and URL persistence",
+      "description": "Add currentServings rune initialized from recipe.servings.default, synced to ?servings=N query parameter via replaceState. Wire ScalingControl to update currentServings and re-scale ingredient quantities.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RV-003",
+      "title": "Implement ingredient checkbox interaction",
+      "description": "Add local-only checkbox state to each ingredient item. Checked items get strikethrough styling (line-through opacity-50). State is not persisted across page loads.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RV-004",
+      "title": "Render Notes section from Markdown body",
+      "description": "Parse and render the ## Notes section from the recipe Markdown body. Show with a divider and heading if present, collapse by default on mobile.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RV-005",
+      "title": "Build RecipeActionBar component",
+      "description": "Create RecipeActionBar.svelte with Print, Share, Add to Shopping List buttons for all users, plus Edit and Delete buttons for owners. Wire navigation and API calls.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RV-006",
+      "title": "Implement delete flow with confirmation dialog",
+      "description": "Wire the Delete button to open a ConfirmDialog, then call DELETE /api/v1/recipes/:slug on confirm. Show success toast and redirect to /recipes, or error toast on failure.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RV-007",
+      "title": "Implement print view styles",
+      "description": "Add @media print CSS rules: hide Navbar, Footer, ActionBar, ScalingControl, checkboxes, tags. Use serif font, 12pt, single column. Avoid page breaks inside instruction steps.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RV-008",
+      "title": "Implement share functionality",
+      "description": "Add clipboard copy via navigator.clipboard.writeText() with toast confirmation. On mobile devices supporting navigator.share(), use native share sheet instead.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RV-009",
+      "title": "Implement responsive layout for recipe viewer",
+      "description": "Build the two-column layout (35% ingredients, 65% instructions) for desktop with sticky ingredients sidebar. Stack vertically on tablet/mobile with collapsible ingredients section.",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RV-010",
+      "title": "Write tests for recipe viewer",
+      "description": "Test recipe data loading, ingredient scaling math and display, checkbox toggling, print style visibility, share/clipboard behavior, delete flow, responsive layout breakpoints, and accessibility (labels, skip links).",
+      "spec": "specs/recipe-viewer.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
