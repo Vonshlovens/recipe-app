@@ -360,6 +360,70 @@
       "spec": "specs/auth.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "SQ-001",
+      "title": "Implement tag query parser",
+      "description": "Build the parser that accepts comma-separated group:value strings from API query parameters, validates group and value, deduplicates, and detects contradictory queries (tag in both include and exclude).",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SQ-002",
+      "title": "Implement tag query SQL builder",
+      "description": "Build the SQL generator that translates a parsed TagQuery (AND/OR/NOT operators) into parameterized SQL using INTERSECT, UNION, and NOT IN subqueries against the recipe_tags table.",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SQ-003",
+      "title": "Implement full-text search query processing",
+      "description": "Build the search query processor: sanitize user input (strip FTS5 operators), tokenize, append prefix wildcard to last term, and execute against recipes_fts with BM25 ranking (title weight 10.0, body weight 1.0).",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SQ-004",
+      "title": "Implement sort parser and SQL generation",
+      "description": "Build the sort option parser that accepts a sort string (e.g., '-createdAt'), validates against allowed fields (createdAt, updatedAt, title), and generates ORDER BY clauses with a secondary sort on id for stability.",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SQ-005",
+      "title": "Implement pagination logic",
+      "description": "Build the pagination module: validate page/pageSize parameters, calculate offset, execute COUNT query for total items, and assemble pagination meta (page, pageSize, totalItems, totalPages).",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SQ-006",
+      "title": "Build composable query builder",
+      "description": "Create the QueryBuilder that composes tag filters, full-text search, difficulty filter, sorting, and pagination into a single parameterized SQL query. Ensure all user input is passed as bind parameters.",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SQ-007",
+      "title": "Implement query input validation and error handling",
+      "description": "Add validation for all query inputs: max tags per operator (10), max search query length (200 chars), invalid sort fields, out-of-range pagination. Return structured errors per the error handling table in the spec.",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SQ-008",
+      "title": "Write unit tests for search and query engine",
+      "description": "Test tag query parsing (valid, invalid, contradictory), SQL generation for all operator combinations, FTS query sanitization and prefix matching, sort parsing, pagination calculation, and query builder composition.",
+      "spec": "specs/search-and-query.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
