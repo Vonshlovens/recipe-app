@@ -1296,6 +1296,86 @@
       "spec": "specs/recipe-viewer.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "SU-001",
+      "title": "Build search page with data loading",
+      "description": "Create +page.server.ts that reads query params (q, include, exclude, sort, page, pageSize) and fetches results from the appropriate API endpoint. Create +page.svelte composing SearchBar, TagFilter, SearchResults, and Pagination.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-002",
+      "title": "Implement URL-driven search state management",
+      "description": "Persist all search/filter state in URL query parameters. Initialize UI controls from URL params on load. Use replaceState for filter/sort changes, pushState for pagination. Ensure browser back/forward works correctly.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-003",
+      "title": "Build SortSelect component",
+      "description": "Create SortSelect.svelte using shadcn-svelte Select with options: Newest, Oldest, Title A–Z, Title Z–A, Recently Updated. Default to Newest (-createdAt). Update ?sort= query param on change.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SU-004",
+      "title": "Integrate TagFilter with API and URL state",
+      "description": "Fetch available tags from GET /api/v1/tags on mount. Wire three-state tag toggles (default/include/exclude) to update ?include= and ?exclude= query params. Show usage counts per tag. Reset to page 1 on filter change.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-005",
+      "title": "Build ActiveFilters chip bar",
+      "description": "Create ActiveFilters.svelte showing removable chips for each active include/exclude filter. Include filters use default badge styling, exclude filters use destructive/red styling. Add a Clear All button.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SU-006",
+      "title": "Build FilterDrawer for mobile",
+      "description": "Create FilterDrawer.svelte as a slide-out panel containing TagFilter and SortSelect for tablet/mobile. Toggle via a Filters button with active filter count badge. Close with Escape key or overlay click.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "SU-007",
+      "title": "Implement query composition logic",
+      "description": "Compose the correct API request from combined search text, tag filters, sort, and pagination params. When both q and tag filters are present, send a combined request to /api/v1/recipes/query with the q parameter.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-008",
+      "title": "Implement loading, empty, and error states",
+      "description": "Show skeleton card grids during loading, EmptyState components for no-results scenarios (no recipes, no matches, filters too restrictive), and ErrorBanner for API/network failures with retry.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-009",
+      "title": "Implement responsive search layout",
+      "description": "Build the desktop sidebar layout (260px fixed + fluid grid), tablet drawer layout (2-column grid), and mobile layout (1-column grid with simplified pagination). Handle grid column breakpoints at 768px, 1024px, and 1440px.",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "SU-010",
+      "title": "Write tests for search UI",
+      "description": "Test URL state round-tripping, query composition from combined inputs, tag filter toggle states, debounced search, pagination controls, empty/error state rendering, active filter chip removal, and accessibility (aria-live, keyboard nav).",
+      "spec": "specs/search-ui.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
