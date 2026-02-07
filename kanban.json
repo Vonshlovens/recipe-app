@@ -1376,6 +1376,86 @@
       "spec": "specs/search-ui.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "IF-001",
+      "title": "Build UrlInput component with client-side validation",
+      "description": "Create UrlInput.svelte with a full-width text input, submit button, auto-focus, and client-side validation (non-empty, starts with http(s)://, max 2048 chars). Display inline validation errors.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-002",
+      "title": "Build ImportProgress loading state component",
+      "description": "Create ImportProgress.svelte with spinner, status message, domain display extracted from URL, indeterminate progress bar, Cancel button wired to AbortController, and reassurance message after 5 seconds.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-003",
+      "title": "Build ImportError component with error message mapping",
+      "description": "Create ImportError.svelte that maps API error codes (INVALID_IMPORT_URL, IMPORT_FETCH_FAILED, IMPORT_NO_RECIPE_FOUND, etc.) to user-friendly messages. Include 'Try Another URL' and 'Create Manually' action buttons.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-004",
+      "title": "Build ConfidenceIndicator component",
+      "description": "Create ConfidenceIndicator.svelte that wraps form fields with an amber warning border and tooltip for fields extracted with low confidence. Use aria-describedby for accessibility.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IF-005",
+      "title": "Build ImportWarnings collapsible alert section",
+      "description": "Create ImportWarnings.svelte that renders import draft warnings (MISSING_TITLE, LOW_CONFIDENCE_FIELD, DUPLICATE_URL, etc.) as a collapsible alert list above the review form.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IF-006",
+      "title": "Build ImportReview component wrapping RecipeEditor",
+      "description": "Create ImportReview.svelte that wraps RecipeEditor with import-specific additions: source banner showing origin URL and extraction method, confidence indicators on low-confidence fields, and read-only source.type/source.url fields.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-007",
+      "title": "Implement import flow page with step state machine",
+      "description": "Create +page.svelte for /recipes/import with runes-based step state (input → loading → review/error). Wire UrlInput submission to POST /api/v1/recipes/import, handle success (show ImportReview) and failure (show ImportError). Implement AbortController for cancellation.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-008",
+      "title": "Implement import save and discard flows",
+      "description": "Wire Save button in ImportReview to POST /api/v1/recipes with source.type='import'. On success, show toast and redirect to /recipes/[slug]. Implement Discard button with ConfirmDialog if edits were made, returning to URL input step.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-009",
+      "title": "Add auth guard to import route",
+      "description": "Create +page.server.ts for /recipes/import that redirects unauthenticated users to /auth/login.",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IF-010",
+      "title": "Write tests for import flow",
+      "description": "Test URL validation (empty, invalid scheme, too long), loading state (cancel button, timeout message), error display for each error code, confidence indicator rendering, warning list display, save flow (success + error), discard flow with dirty check, and accessibility (aria-live, role=alert).",
+      "spec": "specs/import-flow.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }

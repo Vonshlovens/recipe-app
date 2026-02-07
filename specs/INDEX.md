@@ -33,7 +33,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/recipe-editor.md` — Markdown + YAML frontmatter editing UX, tag input, live preview, validation feedback
 - [x] `specs/recipe-viewer.md` — Recipe display, scaling controls, ingredient list rendering, print/share view
 - [x] `specs/search-ui.md` — Tag-based search interface, filter controls, results display, empty/loading/error states
-- [ ] `specs/import-flow.md` — URL import UI, progress/status feedback, review and edit before save
+- [x] `specs/import-flow.md` — URL import UI, progress/status feedback, review and edit before save
 - [ ] `specs/ocr-flow.md` — Image upload UI, camera capture option, OCR progress, rights attestation modal, review and edit before save
 - [ ] `specs/shopping-list-ui.md` — Shopping list builder, recipe selection, scaling per recipe, combined list view, check-off interaction
 - [ ] `specs/recommendations-ui.md` — Recommendation feed, preference controls, "what are you looking for?" input
