@@ -504,6 +504,102 @@
       "spec": "specs/backend-architecture.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "IMP-001",
+      "title": "Implement URL validator for import pipeline",
+      "description": "Build the URL validation module: check for valid absolute URL with http/https scheme, block private/internal IP ranges (SSRF prevention), enforce 2048 char max length, and support a configurable domain blocklist.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-002",
+      "title": "Implement HTTP fetcher for import pipeline",
+      "description": "Build the fetcher module that issues an HTTP GET with a custom User-Agent, 15-second timeout, 5 MB max response size, and max 5 redirects. Return the HTML body or a typed fetch error.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-003",
+      "title": "Implement JSON-LD recipe extractor",
+      "description": "Parse <script type=\"application/ld+json\"> blocks from HTML, locate Schema.org Recipe objects (including @graph arrays), and extract all mapped fields (name, recipeIngredient, recipeInstructions, times, yield, author, image, etc.).",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-004",
+      "title": "Implement microdata recipe extractor",
+      "description": "Walk the DOM for elements with itemscope/itemtype containing schema.org/Recipe, collect itemprop values, and map to the same field mapping as JSON-LD extraction.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IMP-005",
+      "title": "Implement fallback HTML scraper",
+      "description": "Build heuristic-based extraction: find title from h1/og:title/title, ingredients from ul/ol in ingredient-like containers, instructions from ol in instruction/direction/step/method containers, and image from og:image or largest img.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IMP-006",
+      "title": "Implement extraction strategy dispatcher",
+      "description": "Build the extractor module that tries JSON-LD, microdata, and fallback scraping in priority order, short-circuiting on the first success. Return extracted data with the strategy used and per-field confidence levels.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-007",
+      "title": "Implement duration and yield parsers",
+      "description": "Build duration-parser.ts (human-readable strings like '30 minutes' → ISO 8601 PT30M, plain numbers assumed minutes) and yield-parser.ts (strings like '4 servings', '6', '4-6' → { default: number, unit: string }).",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IMP-008",
+      "title": "Implement tag inferrer for imported recipes",
+      "description": "Build tag-inferrer.ts: map recipeCuisine → tags.cuisine, recipeCategory → tags.meal, scan keywords/title for dietary terms → tags.diet, remaining keywords → tags.custom. Lowercase, hyphenate, validate against tag regex.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "IMP-009",
+      "title": "Implement recipe normalizer",
+      "description": "Build normalizer.ts that transforms raw extracted data into an ImportDraft: generate ULID/slug/timestamps, set source metadata, assemble Markdown body (## Ingredients, ## Instructions, ## Notes), infer tags, run validation, and collect warnings.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-010",
+      "title": "Implement import service orchestrator",
+      "description": "Build import-service.ts that orchestrates the full pipeline: validate URL → fetch HTML → extract recipe → normalize to draft. Handle errors at each stage and return the ImportDraft or a typed error.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-011",
+      "title": "Implement POST /api/v1/recipes/import endpoint",
+      "description": "Create the SvelteKit route at src/routes/api/v1/recipes/import/+server.ts. Require auth, accept { url } body, call import service, return the ImportDraft as a 200 response or error.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "IMP-012",
+      "title": "Write tests for recipe import pipeline",
+      "description": "Test URL validation (valid, private IP, too long), JSON-LD extraction (single Recipe, @graph, missing fields), microdata extraction, fallback scraping, duration/yield parsing, tag inference, normalization, and end-to-end import service.",
+      "spec": "specs/recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
