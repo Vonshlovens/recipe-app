@@ -1000,6 +1000,118 @@
       "spec": "specs/frontend-architecture.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "UC-001",
+      "title": "Add semantic color tokens to app.css",
+      "description": "Add success, warning, and info color tokens to the @theme block in src/app.css alongside the existing palette.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-002",
+      "title": "Install additional shadcn-svelte components",
+      "description": "Install Checkbox, Switch, Tabs, and Tooltip shadcn-svelte components via CLI into $lib/components/ui/.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-003",
+      "title": "Install and configure lucide-svelte icon library",
+      "description": "Add lucide-svelte dependency and verify tree-shaking works for individual icon imports.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-004",
+      "title": "Build RecipeCard component",
+      "description": "Create RecipeCard.svelte displaying image thumbnail, title, difficulty badge, time display, and tag badges with responsive sizing (min 280px, 16:9 image).",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-005",
+      "title": "Build RecipeHeader component",
+      "description": "Create RecipeHeader.svelte with recipe title, source attribution, difficulty badge, time breakdown, servings with scaling, full tag list, and owner action buttons (edit/delete).",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-006",
+      "title": "Build IngredientList and InstructionSteps components",
+      "description": "Create IngredientList.svelte with checkbox items and scaling support, and InstructionSteps.svelte with numbered step rendering.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-007",
+      "title": "Build ScalingControl component",
+      "description": "Create ScalingControl.svelte with increment/decrement buttons, current serving display, and reset button. Enforce min 1, max 100 constraints.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "UC-008",
+      "title": "Build TagBadgeList component with group color mapping",
+      "description": "Create TagBadgeList.svelte rendering color-coded tag badges by group (cuisine=blue, meal=green, diet=purple, technique=orange, custom=secondary) with optional truncation and click handler.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "UC-009",
+      "title": "Build SearchBar component",
+      "description": "Create SearchBar.svelte with debounced input (300ms), search icon, clear button, and Enter-to-submit behavior.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-010",
+      "title": "Build TagFilter component",
+      "description": "Create TagFilter.svelte with collapsible tag group sections, three-state toggle (include/exclude/clear) per tag, usage counts, and a clear-all button.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-011",
+      "title": "Build SearchResults component",
+      "description": "Create SearchResults.svelte with responsive RecipeCard grid (1/2/3/4 columns), results count header, empty state, and skeleton loading state.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "UC-012",
+      "title": "Build ConfirmDialog component",
+      "description": "Create ConfirmDialog.svelte wrapping shadcn Dialog with configurable title, description, confirm/cancel labels, and destructive variant support.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "UC-013",
+      "title": "Implement mobile-responsive Navbar with hamburger menu",
+      "description": "Extend Navbar.svelte with a mobile hamburger menu that collapses nav links into a slide-out drawer on small screens.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "UC-014",
+      "title": "Write tests for custom UI components",
+      "description": "Test RecipeCard rendering, ScalingControl constraints, TagBadgeList truncation, SearchBar debounce, TagFilter state toggling, Pagination bounds, and ConfirmDialog interactions.",
+      "spec": "specs/ui-components.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }

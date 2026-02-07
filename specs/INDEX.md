@@ -29,7 +29,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 ### Frontend
 
 - [x] `specs/frontend-architecture.md` — SvelteKit 2 / Svelte 5 project structure, routing strategy, layout hierarchy, state management patterns, Tailwind 4 setup
-- [ ] `specs/ui-components.md` — Component inventory, design system tokens, shared component API contracts
+- [x] `specs/ui-components.md` — Component inventory, design system tokens, shared component API contracts
 - [ ] `specs/recipe-editor.md` — Markdown + YAML frontmatter editing UX, tag input, live preview, validation feedback
 - [ ] `specs/recipe-viewer.md` — Recipe display, scaling controls, ingredient list rendering, print/share view
 - [ ] `specs/search-ui.md` — Tag-based search interface, filter controls, results display, empty/loading/error states
