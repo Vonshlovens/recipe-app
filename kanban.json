@@ -1656,6 +1656,102 @@
       "spec": "specs/shopping-list-ui.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "RU-001",
+      "title": "Build recommendations page with initial data loading",
+      "description": "Create +page.server.ts with auth guard and initial recommendation fetch via GET /api/v1/recommendations. Create +page.svelte composing MoodInput, RecommendationFilters, RecommendationCard grid, and Load More button.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-002",
+      "title": "Build MoodInput component",
+      "description": "Create MoodInput.svelte with text input (placeholder: 'What are you looking for?'), 200-char max with character counter, Go submit button, Enter-to-submit, and clear (×) button. Submitting re-fetches recommendations with mood parameter.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-003",
+      "title": "Build RecommendationFilters component",
+      "description": "Create RecommendationFilters.svelte with Difficulty select (Any/Easy/Medium/Hard), Max Time select (Any/15m/30m/1h/2h mapped to ISO 8601), and Exclude Owned checkbox. Filter changes trigger re-fetch.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-004",
+      "title": "Build RecommendationCard component",
+      "description": "Create RecommendationCard.svelte extending RecipeCard with reason text displayed in muted style below tags and a score tooltip on hover. Card links to /recipes/{slug}.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-005",
+      "title": "Implement Load More pagination",
+      "description": "Add Load More button that fetches the next page of recommendations and appends to the existing list. Track hasMore state to hide button when no more results. Announce new result count via aria-live.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RU-006",
+      "title": "Build PreferencesPanel component",
+      "description": "Create PreferencesPanel.svelte as a slide-out panel (desktop) or full-screen modal (mobile) with TagProfileSummary, boost/suppression tag lists with add/remove, 20-preference limit enforcement, and Save button wired to PUT /api/v1/recommendations/preferences.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-007",
+      "title": "Build TagProfileSummary component",
+      "description": "Create TagProfileSummary.svelte that fetches GET /api/v1/recommendations/profile and displays the user's top 5 tag frequencies with percentages as a summary line.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RU-008",
+      "title": "Build PreferenceTagInput component",
+      "description": "Create PreferenceTagInput.svelte with autocomplete querying GET /api/v1/tags, group:value selection, duplicate and contradiction prevention (toast if tag already in opposite list), and disabled state at 20 total preferences.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-009",
+      "title": "Build ColdStartBanner component",
+      "description": "Create ColdStartBanner.svelte displaying a prompt for new users: 'Save a few recipes or set preferences to get personalized recommendations.' Show suggested boost tags from popular tag groups. Uses role=status for screen readers.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RU-010",
+      "title": "Implement empty, loading, and error states",
+      "description": "Show skeleton card grids during loading, EmptyState for no-recipes/no-matches/filter-too-restrictive scenarios, cold start banner for new users, and ErrorBanner with Retry for API failures.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-011",
+      "title": "Implement responsive layout for recommendations page",
+      "description": "Build desktop 4-column card grid with 400px side preferences panel, tablet 2-column grid with modal preferences, and mobile 1-column grid with full-screen preferences and stacked filters.",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RU-012",
+      "title": "Write tests for recommendations UI",
+      "description": "Test initial feed loading, mood input submission and clear, filter changes triggering re-fetch, Load More appending results, preferences panel open/close, boost/suppression add/remove/save, contradiction prevention, cold start banner display, empty/error states, and accessibility (aria-live, focus trap, keyboard nav).",
+      "spec": "specs/recommendations-ui.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
