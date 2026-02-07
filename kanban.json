@@ -1840,6 +1840,86 @@
       "spec": "specs/mobile-strategy.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "DEP-001",
+      "title": "Configure svelte-adapter-deno in svelte.config.js",
+      "description": "Install svelte-adapter-deno and configure it in svelte.config.js to output a Deno Deploy-compatible build to the build/ directory.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-002",
+      "title": "Create .env.example with all required variables",
+      "description": "Create .env.example listing DATABASE_URL, SESSION_SECRET, OCR_API_KEY, PUBLIC_BASE_URL, and NODE_ENV with placeholder values. Ensure .env is in .gitignore.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-003",
+      "title": "Create GitHub Actions CI/CD workflow",
+      "description": "Create .github/workflows/deploy.yml with lint, type check, test, build, and deploy steps. Deploy only on push to main. Use denoland/setup-deno and denoland/deployctl actions.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-004",
+      "title": "Add build and preview tasks to deno.json",
+      "description": "Add dev, build, preview, and migrate:deploy tasks to deno.json using Vite and the migration script.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-005",
+      "title": "Implement database migration runner script",
+      "description": "Create src/lib/server/db/migrate.ts that connects to the database, acquires an advisory lock, runs pending migrations in order, and releases the lock.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-006",
+      "title": "Implement health check endpoint",
+      "description": "Create GET /api/v1/health endpoint that returns status, version, and timestamp. Verify database connectivity with a SELECT 1 query.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-007",
+      "title": "Configure static asset caching headers",
+      "description": "Set Cache-Control headers: immutable assets get max-age=31536000, other assets get max-age=3600. Configure in the server entry point or adapter config.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "DEP-008",
+      "title": "Add security headers middleware",
+      "description": "Add Content-Security-Policy, X-Frame-Options: DENY, and CORS headers restricted to PUBLIC_BASE_URL origin. Configure in SvelteKit hooks.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DEP-009",
+      "title": "Configure preview deployments for pull requests",
+      "description": "Set up Deno Deploy GitHub integration for automatic preview deployments on PRs with a shared staging database.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "DEP-010",
+      "title": "Write tests for deployment infrastructure",
+      "description": "Test health check endpoint response, migration runner (lock acquisition, ordering, idempotency), environment variable validation on startup, and security headers presence.",
+      "spec": "specs/deployment.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }

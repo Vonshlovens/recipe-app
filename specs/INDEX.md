@@ -44,7 +44,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 
 ### Cross-Cutting
 
-- [ ] `specs/deployment.md` — Hosting, CI/CD, environment config, Deno Deploy or alternative
+- [x] `specs/deployment.md` — Hosting, CI/CD, environment config, Deno Deploy or alternative
 - [ ] `specs/testing-strategy.md` — Unit, integration, E2E approach and tooling for Deno + SvelteKit
 - [ ] `specs/error-handling.md` — Global error handling patterns (client + server), user-facing error messages, logging
 
