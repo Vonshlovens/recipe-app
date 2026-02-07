@@ -2288,6 +2288,86 @@
       "spec": "specs/feature-ocr-capture.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FRC-001",
+      "title": "Build recommendation feed page with server-side data loading",
+      "description": "Create /recommendations route with +page.server.ts auth guard and load function that fetches GET /api/v1/recommendations?limit=10. Render results as RecipeCards in a responsive grid (4/2/1 columns) with reason text and score tooltip.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRC-002",
+      "title": "Implement mood input and filter controls",
+      "description": "Add 'What are you looking for?' text input (200 char max with counter), difficulty dropdown (Any/Easy/Medium/Hard), max time dropdown (Any/15m/30m/1h/2h), and 'exclude owned' checkbox. Each control triggers a re-fetch replacing current results.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRC-003",
+      "title": "Implement Load More and refresh button",
+      "description": "Add Load More button that appends next page of results via client-side fetch with offset. Add refresh button that re-fetches with same parameters for new diversity-ranked set. Hide Load More when no more results. Cancel in-flight requests on new fetches.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRC-004",
+      "title": "Build preferences panel with boost/suppress management",
+      "description": "Create slide-out panel (desktop) / modal (mobile) with tag profile summary, boost/suppress tag lists with remove buttons, tag input with autocomplete, 20-preference limit with counter, and Save Preferences button calling PUT /api/v1/recommendations/preferences.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRC-005",
+      "title": "Implement tag profile display in preferences panel",
+      "description": "On preferences panel open, fetch GET /api/v1/recommendations/profile and display user's top 5 tags with frequency percentages. Show cold-start prompt with suggested boost tags for new users.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRC-006",
+      "title": "Implement preference validation and conflict prevention",
+      "description": "Prevent adding the same tag to both boosts and suppressions (show toast on conflict). Disable Add button at 20 total with tooltip. Validate before saving. Show success/error toasts on save.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRC-007",
+      "title": "Implement cold-start and empty states",
+      "description": "Handle all empty/loading/error states: no recipes in DB, new user cold start with popular recipes and banner, no results for filters with Clear Filters, loading skeleton grid, and error banner with Retry.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRC-008",
+      "title": "Implement recommendation reason display and score tooltip",
+      "description": "Extend RecipeCard with reason text in muted style below tags. Add score tooltip on hover showing raw relevance score. Link reason text via aria-describedby for accessibility.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRC-009",
+      "title": "Implement request deduplication and abort handling",
+      "description": "Ensure only one recommendation request is in flight at a time. Cancel pending requests via AbortController when new fetches are triggered by filter changes, mood submit, or refresh. Load More requests are replaced by filter changes.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRC-010",
+      "title": "Write tests for recommendations feature",
+      "description": "Test feed rendering, mood input submit/clear, filter changes triggering re-fetch, Load More pagination, refresh behavior, preferences panel open/close, boost/suppress add/remove/conflict, cold-start states, empty states, error states, and request cancellation.",
+      "spec": "specs/feature-recommendations.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
