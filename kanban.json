@@ -2208,6 +2208,86 @@
       "spec": "specs/feature-recipe-import.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FOC-001",
+      "title": "Build image upload component with file picker, camera, and drag-and-drop",
+      "description": "Create the ImageUpload component supporting file picker, camera capture (rear camera via capture='environment'), and drag-and-drop. Include client-side validation for format (JPEG, PNG, WebP, HEIC) and size (10 MB max). Show thumbnail preview with remove button after selection.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-002",
+      "title": "Build OCR language selection dropdown",
+      "description": "Create LanguageSelect component with support for English, French, German, Spanish, Italian, Japanese. Allow optional secondary language selection for bilingual recipes.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FOC-003",
+      "title": "Implement OCR processing state with cancel support",
+      "description": "Build OcrProgress component with spinner, status message, reassurance message after 10 seconds, and Cancel button wired to AbortController. Disable upload area during processing.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-004",
+      "title": "Build OCR review page with confidence indicators and raw text panel",
+      "description": "Create OcrReview component wrapping RecipeEditor with OCR-specific additions: confidence banner (green/amber/red), collapsible raw OCR text panel, amber warning borders on low-confidence sections, and collapsible warnings list.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-005",
+      "title": "Build rights attestation modal",
+      "description": "Create AttestationModal component with four radio options (personal use, public domain, own recipe, permission granted), legal disclaimer text, and Save Recipe button disabled until selection. Set attestation fields on confirmation.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-006",
+      "title": "Wire up OCR page flow and state management",
+      "description": "Implement the /recipes/ocr page with step-based state (upload, processing, review, error). Wire image upload to POST /api/v1/recipes/ocr, handle success/error transitions, and integrate all OCR sub-components.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-007",
+      "title": "Implement OCR error states with user-friendly messages",
+      "description": "Build OcrError component mapping all OCR error codes to user-friendly messages. Include 'Try Another Image' and 'Create Manually' action buttons. Use role='alert' for accessibility.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FOC-008",
+      "title": "Implement discard flow with confirmation dialog",
+      "description": "Add Discard button to review step that shows a ConfirmDialog if edits were made, then resets to upload step with image cleared.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FOC-009",
+      "title": "Implement save flow with attestation enforcement",
+      "description": "Wire Save button to open attestation modal, then submit to POST /api/v1/recipes with source.type 'ocr' and attestation data. Handle success toast + redirect, validation errors inline, and network errors with retry.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FOC-010",
+      "title": "Write tests for OCR capture feature",
+      "description": "Test image upload validation, processing/cancel flow, review rendering with confidence indicators, raw text panel, warning display, attestation modal flow, discard confirmation, save success/error paths, and all error state mappings.",
+      "spec": "specs/feature-ocr-capture.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
