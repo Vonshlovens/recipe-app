@@ -2128,6 +2128,86 @@
       "spec": "specs/feature-tag-query.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FRI-001",
+      "title": "Build URL input form with client-side validation",
+      "description": "Create UrlInput.svelte component with auto-focus, HTTP(S) scheme validation, 2048-char limit, inline error display, and disabled state during loading.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-002",
+      "title": "Implement import loading/progress state",
+      "description": "Create ImportProgress.svelte with spinner, domain display, cancel button via AbortController, and 5-second reassurance message.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-003",
+      "title": "Integrate RecipeEditor for import review step",
+      "description": "Create ImportReview.svelte wrapping RecipeEditor with source banner, confidence indicators (amber borders for low-confidence fields), and read-only source fields.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-004",
+      "title": "Build import warnings display",
+      "description": "Create ImportWarnings.svelte collapsible alert section showing extraction warnings (MISSING_TITLE, MISSING_INGREDIENTS, LOW_CONFIDENCE_FIELD, DUPLICATE_URL, etc.).",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRI-005",
+      "title": "Build confidence indicator component",
+      "description": "Create ConfidenceIndicator.svelte with amber warning border and aria-describedby tooltip for low-confidence extracted fields.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRI-006",
+      "title": "Implement import error state UI",
+      "description": "Create ImportError.svelte with user-friendly error messages per error code, 'Try Another URL' (pre-filled), and 'Create Manually' navigation.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-007",
+      "title": "Wire up import page routing and state machine",
+      "description": "Create /recipes/import route with +page.server.ts auth guard and +page.svelte managing the four-step state machine (input → loading → review/error).",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-008",
+      "title": "Implement discard flow with confirmation dialog",
+      "description": "Add Discard button to review step that shows a ConfirmDialog if edits were made, then resets to URL input step.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FRI-009",
+      "title": "Implement save flow from import review",
+      "description": "Wire Save button to POST /api/v1/recipes, handle success toast + redirect to /recipes/{slug}, validation errors inline, and network errors with retry.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FRI-010",
+      "title": "Write tests for recipe import feature",
+      "description": "Test URL validation, loading/cancel flow, review rendering with confidence indicators, warning display, discard confirmation, save success/error paths, and all error state mappings.",
+      "spec": "specs/feature-recipe-import.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
