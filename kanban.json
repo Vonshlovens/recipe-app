@@ -1112,6 +1112,110 @@
       "spec": "specs/ui-components.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "RE-001",
+      "title": "Build RecipeEditor orchestrator component",
+      "description": "Create RecipeEditor.svelte that composes the full editor form: title, author, difficulty, time fields, servings, tags, and Markdown body. Handle both create and edit modes with prop-driven initial state.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-002",
+      "title": "Build DurationInput component",
+      "description": "Create DurationInput.svelte with hours (0–99) and minutes (0–59) numeric inputs that store/parse ISO 8601 durations (e.g., PT30M). Show auto-calculated totalTime as read-only when both prep and cook are filled.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-003",
+      "title": "Build TagInput component with autocomplete",
+      "description": "Create TagInput.svelte with per-group tag entry, chip display with removal, autocomplete from GET /api/v1/tags/:group, input validation (lowercase, hyphenated, max 50 chars), and 20-tag-per-group limit.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-004",
+      "title": "Build MarkdownEditor component with toolbar",
+      "description": "Create MarkdownEditor.svelte with monospace textarea (min 400px height, resizable), line numbers gutter, and MarkdownToolbar.svelte with formatting shortcuts (bold, italic, heading, lists, link).",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-005",
+      "title": "Implement Markdown body template for new recipes",
+      "description": "Pre-populate the Markdown editor with the starter template (## Ingredients, ## Instructions, ## Notes sections) when creating a new recipe.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RE-006",
+      "title": "Build RecipePreview live preview panel",
+      "description": "Create RecipePreview.svelte that renders the current form state using RecipeHeader, IngredientList, and InstructionSteps components. Debounce Markdown rendering by 300ms. Make the panel collapsible on desktop and tab-based on mobile.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-007",
+      "title": "Implement client-side form validation",
+      "description": "Add validation on blur and on save: title required (1–200 chars), servings positive integer, valid tag format, body must contain ## Ingredients and ## Instructions with at least one list item each, body max 50,000 chars. Display inline errors with scroll-to-first-error on save.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-008",
+      "title": "Implement create recipe save flow",
+      "description": "Wire the Save button to POST /api/v1/recipes with assembled form data and source.type='manual'. Handle success (toast + redirect to /recipes/[slug]), validation errors (inline display), and network errors (error toast).",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-009",
+      "title": "Implement edit recipe load and save flow",
+      "description": "Load existing recipe data into the form on /recipes/[slug]/edit. Wire Save to PUT /api/v1/recipes/:slug. Handle 404, auth errors, and validation errors. Pre-fill all fields from the existing recipe.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-010",
+      "title": "Implement unsaved changes guard",
+      "description": "Track dirty state across all form fields. Use SvelteKit's beforeNavigate to show a ConfirmDialog ('Unsaved changes — Leave or Stay?') when navigating away with unsaved changes.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RE-011",
+      "title": "Implement keyboard shortcuts for editor",
+      "description": "Register Ctrl/Cmd+S (save), Ctrl/Cmd+P (toggle preview), and Escape (close preview) shortcuts. Prevent browser defaults for these key combos.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RE-012",
+      "title": "Implement responsive editor layout",
+      "description": "Build the two-column layout (60/40 editor/preview) for desktop, single-column with tab toggle for tablet, and edit-only with preview tab for mobile. Handle preview panel collapse/expand.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RE-013",
+      "title": "Write tests for recipe editor components",
+      "description": "Test DurationInput ISO 8601 parsing, TagInput validation and autocomplete, MarkdownEditor toolbar actions, form validation (valid and invalid cases), unsaved changes guard, save flow (create and edit), and server error mapping.",
+      "spec": "specs/recipe-editor.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
