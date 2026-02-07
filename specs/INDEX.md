@@ -56,4 +56,4 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 - [x] `specs/feature-recipe-import.md` — Full feature spec for importing recipes from URLs: supported sites, failure modes, user flow
 - [x] `specs/feature-ocr-capture.md` — Full feature spec for OCR recipe capture: image requirements, attestation copy, accuracy expectations, edit flow
 - [x] `specs/feature-recommendations.md` — Full feature spec for recipe recommendations: personalization inputs, display, refresh behavior
-- [ ] `specs/feature-shopping-list.md` — Full feature spec for shopping lists: scaling, multi-recipe merge, ingredient grouping, export options
+- [x] `specs/feature-shopping-list.md` — Full feature spec for shopping lists: scaling, multi-recipe merge, ingredient grouping, export options

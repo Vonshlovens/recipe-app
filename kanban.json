@@ -2368,6 +2368,86 @@
       "spec": "specs/feature-recommendations.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FSL-001",
+      "title": "Build recipe search autocomplete for shopping list",
+      "description": "Create recipe search input with 300ms debounce querying GET /api/v1/recipes, dropdown results display, click-to-add, duplicate prevention toast, and 20-recipe limit enforcement with disabled state.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-002",
+      "title": "Build selected recipe cards with per-recipe scaling",
+      "description": "Display each selected recipe with title, remove button, and ScalingControl for servings adjustment. Enforce 0.25x–10x scaling limits relative to default servings.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-003",
+      "title": "Implement shopping list generation flow",
+      "description": "Wire Generate button to POST /api/v1/shopping-list with selected recipe IDs and target servings. Handle success (display list), RECIPE_NOT_FOUND errors, and network errors with toast messages.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-004",
+      "title": "Build shopping list item display with source references",
+      "description": "Render each shopping list item with checkbox, formatted quantity/unit, ingredient name, and source recipe references. Show raw line as fallback for unparseable ingredients. Display separate line items for incompatible units.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-005",
+      "title": "Implement check-off interaction and sorting",
+      "description": "Add checkbox toggle per item with strikethrough/opacity styling when checked. Move checked items to bottom. Display checked count (e.g., '5 of 23 items checked'). Add Uncheck All button.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-006",
+      "title": "Implement edit-recipes and clear flows",
+      "description": "Add Edit Recipes button to re-expand recipe selection with current selections preserved. Regenerating resets check state. Add Clear button with confirmation dialog when items are checked.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FSL-007",
+      "title": "Implement print view for shopping list",
+      "description": "Add Print button triggering window.print(). Print styles hide Navbar, Footer, action buttons, and checked items. Include title with date and source recipes section.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FSL-008",
+      "title": "Implement clipboard copy and native share export",
+      "description": "Add Copy to Clipboard button that formats the list as plain text (one item per line, with header and date). Show success toast. On mobile with navigator.share(), add Share button for native share sheet.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FSL-009",
+      "title": "Implement responsive layout for shopping list feature",
+      "description": "Build desktop two-column layout (320px recipe sidebar + fluid list), tablet stacked layout with collapsible selection, and mobile single-column with larger touch targets.",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FSL-010",
+      "title": "Write tests for shopping list feature",
+      "description": "Test recipe search and add flow, duplicate prevention, scaling limits, list generation success/error, item check-off and sorting, uncheck all, edit-recipes regeneration, clear with confirmation, print view, clipboard copy, share button visibility, and accessibility (aria-live, role=list, keyboard nav).",
+      "spec": "specs/feature-shopping-list.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
