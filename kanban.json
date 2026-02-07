@@ -264,6 +264,102 @@
       "spec": "specs/api-routes.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "AUTH-001",
+      "title": "Write users and sessions migration files",
+      "description": "Create 004_create_users.sql and 005_create_sessions.sql migration files with the users table, sessions table, and their indexes.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-002",
+      "title": "Define User and Session TypeScript types",
+      "description": "Create TypeScript interfaces for User (id, email, displayName, createdAt, updatedAt) and Session (id, userId, createdAt, expiresAt). Exclude passwordHash from the public User type.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-003",
+      "title": "Implement password hashing utility",
+      "description": "Create a utility module for bcrypt password hashing (cost factor 10) and comparison. Enforce password length rules (8–128 characters).",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-004",
+      "title": "Implement session token generation and management",
+      "description": "Create functions for generating cryptographically random 32-byte hex session tokens, creating session rows, validating sessions, extending expiry (sliding window at 50% lifetime), and deleting sessions.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-005",
+      "title": "Implement SvelteKit handle hook for session validation",
+      "description": "Add session validation in src/hooks.server.ts: read the session cookie, look up the token, load the user into event.locals.user. Update app.d.ts with the Locals type.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-006",
+      "title": "Implement POST /api/v1/auth/register",
+      "description": "Create the registration endpoint: validate email/displayName/password, hash password, insert user, return 201 with user data. Handle 409 for duplicate emails.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-007",
+      "title": "Implement POST /api/v1/auth/login",
+      "description": "Create the login endpoint: validate credentials, compare password hash, create session row, set session cookie, return user data. Return generic 401 on failure.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-008",
+      "title": "Implement POST /api/v1/auth/logout",
+      "description": "Create the logout endpoint: delete the session row, clear the session cookie, return 204. Idempotent if no session exists.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "AUTH-009",
+      "title": "Implement GET /api/v1/auth/me",
+      "description": "Create the current-user endpoint: return the authenticated user's data from event.locals.user. Return 401 if not authenticated.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "AUTH-010",
+      "title": "Implement requireAuth helper and protect write endpoints",
+      "description": "Create a reusable requireAuth function that throws 401 if event.locals.user is missing. Add it to POST/PUT/PATCH/DELETE recipe endpoints.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "AUTH-011",
+      "title": "Implement expired session cleanup",
+      "description": "Build a function to delete expired sessions from the sessions table. Can be called on a schedule or on-demand.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "low"
+    },
+    {
+      "id": "AUTH-012",
+      "title": "Write tests for auth system",
+      "description": "Test registration (valid, duplicate email, invalid input), login (valid, wrong password, wrong email), logout, session validation, session expiry, requireAuth middleware, and cookie handling.",
+      "spec": "specs/auth.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
