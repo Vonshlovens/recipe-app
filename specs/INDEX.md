@@ -17,7 +17,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 
 - [ ] `specs/backend-architecture.md` — Runtime setup (Deno), project structure, API layer design, middleware, error handling conventions
 - [x] `specs/database.md` — Database choice, schema design, migrations strategy, indexing for tag-based queries
-- [ ] `specs/api-routes.md` — REST/RPC endpoint definitions, request/response shapes, auth requirements per route
+- [x] `specs/api-routes.md` — REST/RPC endpoint definitions, request/response shapes, auth requirements per route
 - [ ] `specs/auth.md` — Authentication and authorization strategy, session management, user accounts
 - [x] `specs/recipe-data-model.md` — Canonical recipe schema, YAML frontmatter spec, markdown body format, tag taxonomy, validation rules
 - [ ] `specs/search-and-query.md` — Tag-based query engine, filtering logic (AND/OR/NOT), full-text search, sorting, pagination

@@ -160,6 +160,110 @@
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "API-001",
+      "title": "Create response envelope helpers",
+      "description": "Build utility functions for the standard JSON response envelope: success (single + list), error, and pagination meta. Include requestId generation.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-002",
+      "title": "Implement request validation middleware",
+      "description": "Build a reusable validation layer for incoming request bodies and query parameters. Return 400 with structured error details on failure. Strip unknown fields.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-003",
+      "title": "Implement GET /api/v1/recipes (list)",
+      "description": "Create the recipe list endpoint with pagination (page, pageSize), sorting (createdAt, updatedAt, title), and optional difficulty filter. Return summary objects without document body.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-004",
+      "title": "Implement GET /api/v1/recipes/:slug (detail)",
+      "description": "Create the recipe detail endpoint that returns the full recipe object including parsed Markdown body. Return 404 if slug not found.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-005",
+      "title": "Implement POST /api/v1/recipes (create)",
+      "description": "Create the recipe creation endpoint. Validate request body, auto-generate id/slug/createdAt/updatedAt/totalTime, persist via the database write path, and return 201 with the full recipe.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-006",
+      "title": "Implement PUT /api/v1/recipes/:slug (full update)",
+      "description": "Create the full recipe replacement endpoint. Require all writable fields, preserve id and createdAt, set updatedAt, regenerate slug if title changed. Return 200 with updated recipe.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-007",
+      "title": "Implement PATCH /api/v1/recipes/:slug (partial update)",
+      "description": "Create the partial update endpoint with merge semantics: top-level fields replaced, tag groups replaced per-group, body replaces entirely if provided. Return 200 with full updated recipe.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "API-008",
+      "title": "Implement DELETE /api/v1/recipes/:slug",
+      "description": "Create the recipe deletion endpoint. Remove the recipe and return 204 No Content. Return 404 if slug not found.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-009",
+      "title": "Implement GET /api/v1/recipes/search (full-text search)",
+      "description": "Create the full-text search endpoint using FTS5. Accept q parameter, return paginated recipe summaries ordered by relevance. Return 400 if q is missing.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "API-010",
+      "title": "Implement GET /api/v1/recipes/query (tag query)",
+      "description": "Create the tag-based query endpoint supporting include (AND), any (OR), and exclude (NOT) parameters as comma-separated group:value pairs. Return paginated results with sorting.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "API-011",
+      "title": "Implement GET /api/v1/tags endpoints",
+      "description": "Create endpoints to list all tags grouped with usage counts (GET /api/v1/tags) and list tags within a specific group (GET /api/v1/tags/:group).",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "API-012",
+      "title": "Set up SvelteKit API route file structure",
+      "description": "Create the SvelteKit file-based route structure under src/routes/api/v1/ with +server.ts files for recipes, recipes/[slug], recipes/search, recipes/query, tags, and tags/[group].",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "API-013",
+      "title": "Write integration tests for API routes",
+      "description": "Test all API endpoints: CRUD operations, pagination, sorting, search, tag queries, validation error responses, 404 handling, and response envelope format.",
+      "spec": "specs/api-routes.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
