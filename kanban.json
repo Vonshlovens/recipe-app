@@ -1984,6 +1984,70 @@
       "spec": "specs/testing-strategy.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "EH-001",
+      "title": "Define ApiError interface and error codes",
+      "description": "Create the shared ApiError response interface and define all standard error codes (VALIDATION_ERROR, UNAUTHORIZED, FORBIDDEN, NOT_FOUND, CONFLICT, RATE_LIMITED, INTERNAL_ERROR, OCR_PROCESSING_FAILED, IMPORT_FETCH_FAILED, IMPORT_PARSE_FAILED) as constants.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "EH-002",
+      "title": "Implement AppError class and apiError helper",
+      "description": "Create AppError class extending Error with code, status, and details fields. Create apiError() helper that returns a JSON Response with the standard error shape.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "EH-003",
+      "title": "Implement handleError server hook",
+      "description": "Add handleError hook in src/hooks.server.ts that catches unexpected errors, generates a requestId, logs structured error data, and returns a safe error response to the client.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "EH-004",
+      "title": "Build structured JSON logger",
+      "description": "Create src/lib/server/logger.ts with debug/info/warn/error methods that output structured JSON log entries with timestamp, level, and arbitrary data fields.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "EH-005",
+      "title": "Create client-side apiFetch wrapper",
+      "description": "Implement apiFetch<T>() in src/lib/api.ts that wraps fetch, checks response.ok, parses error bodies into AppError instances, and throws on failure.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "EH-006",
+      "title": "Create global and per-route error pages",
+      "description": "Add root +error.svelte that displays status code, message, and a link home. Optionally add recipe-specific +error.svelte with contextual messaging.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "EH-007",
+      "title": "Add toast notification system for transient errors",
+      "description": "Implement toast notifications for non-fatal, recoverable errors (failed saves, network issues) with optional retry actions.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "EH-008",
+      "title": "Write unit tests for error handling utilities",
+      "description": "Test AppError construction, apiError response shape, apiFetch error parsing, and logger output format.",
+      "spec": "specs/error-handling.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
