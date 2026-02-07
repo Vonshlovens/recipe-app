@@ -904,6 +904,102 @@
       "spec": "specs/recommendation-engine.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "FA-001",
+      "title": "Set up Tailwind CSS 4 with app.css theme config",
+      "description": "Create src/app.css with Tailwind 4 @import and @theme block defining color palette, typography, border radius, and shadows. Configure dark mode overrides via @theme dark.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-002",
+      "title": "Initialize shadcn-svelte and install base components",
+      "description": "Run shadcn-svelte init, then add initial component set: Button, Card, Input, Label, Textarea, Select, Dialog, Badge, Separator, Skeleton, Toast, DropdownMenu.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-003",
+      "title": "Create root layout with Navbar and Footer",
+      "description": "Build +layout.svelte with Navbar, main content area, and Footer. Create +layout.server.ts that passes auth state (locals.user) to the layout.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-004",
+      "title": "Build Navbar component",
+      "description": "Create Navbar.svelte with app title/logo, navigation links (Recipes, Search, Shopping List, Recommendations), and user menu (login/register or user dropdown with logout).",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-005",
+      "title": "Implement dark mode toggle and theme utility",
+      "description": "Create $lib/utils/theme.ts with getTheme/setTheme functions (localStorage + prefers-color-scheme fallback). Add dark mode toggle to Navbar.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FA-006",
+      "title": "Create API client base and domain modules",
+      "description": "Build $lib/api/client.ts with typed fetch wrapper (get, post, put, patch, delete) and error handling. Create $lib/api/recipes.ts and $lib/api/auth.ts domain modules.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-007",
+      "title": "Create auth runes store",
+      "description": "Build $lib/stores/auth.svelte.ts with runes-based current user state (setUser, getUser). Wire it to the root layout's auth data.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-008",
+      "title": "Create global error page",
+      "description": "Build src/routes/+error.svelte displaying the error status code, message, and a link to go home. Style with Tailwind.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FA-009",
+      "title": "Create shared UI components (LoadingSpinner, EmptyState, ErrorBanner, Pagination)",
+      "description": "Build reusable shared components in $lib/components/shared/: LoadingSpinner, EmptyState (icon + message + optional action), ErrorBanner (dismissible error), Pagination (page controls).",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FA-010",
+      "title": "Set up frontend route skeleton with placeholder pages",
+      "description": "Create the route directory structure for all pages (recipes, recipes/new, recipes/import, recipes/ocr, recipes/[slug], recipes/[slug]/edit, search, shopping-list, recommendations, auth/login, auth/register) with minimal placeholder +page.svelte files.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-011",
+      "title": "Implement auth guard pattern for protected routes",
+      "description": "Add +page.server.ts load functions to protected routes (recipes/new, recipes/import, recipes/ocr, recipes/[slug]/edit, shopping-list, recommendations) that redirect to /auth/login if locals.user is not set.",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FA-012",
+      "title": "Write tests for frontend architecture utilities",
+      "description": "Test API client (success and error responses), theme utility (getTheme/setTheme), and auth store (setUser/getUser).",
+      "spec": "specs/frontend-architecture.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
