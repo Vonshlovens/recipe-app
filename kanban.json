@@ -1,0 +1,85 @@
+{
+  "columns": ["backlog", "in-progress", "review", "done"],
+  "tasks": [
+    {
+      "id": "RDM-001",
+      "title": "Define recipe TypeScript types from schema",
+      "description": "Create TypeScript interfaces/types for the full recipe schema: Recipe, RecipeSource, RecipeTags, Servings, and related types.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RDM-002",
+      "title": "Implement ULID generation for recipe IDs",
+      "description": "Add ULID dependency and create a utility for generating recipe IDs.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RDM-003",
+      "title": "Build YAML frontmatter parser",
+      "description": "Parse Markdown files with YAML frontmatter into structured Recipe objects. Handle the frontmatter/body split.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RDM-004",
+      "title": "Build YAML frontmatter serializer",
+      "description": "Serialize a Recipe object back into a Markdown file with YAML frontmatter.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RDM-005",
+      "title": "Implement frontmatter validation",
+      "description": "Validate all frontmatter fields per spec: ULID format, title length, slug format, servings positivity, ISO 8601 durations, difficulty enum, source.type enum, tag format regex.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "RDM-006",
+      "title": "Implement Markdown body validation",
+      "description": "Validate that the body contains required ## Ingredients and ## Instructions sections with at least one list item each, and that total body size is under 50,000 characters.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RDM-007",
+      "title": "Implement slug generation with collision avoidance",
+      "description": "Generate URL-safe slugs from recipe titles. Handle collisions by appending -2, -3, etc. Regenerate slug on title change.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RDM-008",
+      "title": "Implement on-save logic (updatedAt, totalTime calc)",
+      "description": "On save: set updatedAt to current time, recalculate totalTime from prepTime + cookTime if both present and totalTime not explicitly set.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RDM-009",
+      "title": "Define tag taxonomy constants and validation",
+      "description": "Create constants for built-in tag groups (cuisine, meal, diet, technique, custom) and validate tag values against the regex /^[a-z0-9-]{1,50}$/ with max 20 tags per group.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "RDM-010",
+      "title": "Write unit tests for recipe data model",
+      "description": "Test parsing, serialization, validation (valid and invalid cases), slug generation, on-save logic, and tag validation.",
+      "spec": "specs/recipe-data-model.md",
+      "column": "backlog",
+      "priority": "high"
+    }
+  ]
+}
