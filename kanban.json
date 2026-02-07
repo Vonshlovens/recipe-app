@@ -1456,6 +1456,118 @@
       "spec": "specs/import-flow.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "OF-001",
+      "title": "Build ImageUpload component with drag-and-drop and camera capture",
+      "description": "Create ImageUpload.svelte with file picker (JPEG/PNG/WebP/HEIC), drag-and-drop zone with visual feedback, and camera capture button using <input capture=\"environment\">. Client-side validation for file type and 10 MB size limit.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-002",
+      "title": "Build ImagePreview component",
+      "description": "Create ImagePreview.svelte showing a thumbnail of the selected image (max 300px wide), file name/size display, and a Remove button. Use URL.createObjectURL() with proper cleanup on unmount.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-003",
+      "title": "Build LanguageSelect component",
+      "description": "Create LanguageSelect.svelte dropdown for OCR language selection. Default to English (eng), support French, German, Spanish, Italian, Japanese, and bilingual combinations.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "OF-004",
+      "title": "Build OcrProgress loading state component",
+      "description": "Create OcrProgress.svelte with spinner, status message, indeterminate progress bar, selected image thumbnail, Cancel button wired to AbortController, and reassurance message after 10 seconds.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-005",
+      "title": "Build OcrError component with error message mapping",
+      "description": "Create OcrError.svelte that maps OCR API error codes (OCR_NO_IMAGE, OCR_NO_TEXT, OCR_LOW_CONFIDENCE, etc.) to user-friendly messages. Include 'Try Another Image' and 'Create Manually' action buttons.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-006",
+      "title": "Build OcrConfidenceBanner component",
+      "description": "Create OcrConfidenceBanner.svelte displaying overall OCR confidence as a color-coded banner: green (high, >=70), amber (medium, 50-69), red (low, <50) with guidance text.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-007",
+      "title": "Build RawTextPanel collapsible component",
+      "description": "Create RawTextPanel.svelte as a collapsible section showing the full raw OCR text output for user reference. Labeled 'View raw OCR text', collapsed by default.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "OF-008",
+      "title": "Build OcrWarnings and ConfidenceIndicator components",
+      "description": "Create OcrWarnings.svelte rendering OCR draft warnings as a collapsible alert list. Create ConfidenceIndicator.svelte wrapping fields with amber warning border and tooltip for low-confidence sections.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "OF-009",
+      "title": "Build AttestationModal component",
+      "description": "Create AttestationModal.svelte with rights attestation dialog: radio buttons for attestation type (personal_use, public_domain, own_recipe, permission_granted), Save Recipe button disabled until selection, focus trap, and Escape to dismiss.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-010",
+      "title": "Build OcrReview component wrapping RecipeEditor",
+      "description": "Create OcrReview.svelte that wraps RecipeEditor with OCR-specific additions: OcrConfidenceBanner, RawTextPanel, ConfidenceIndicators on low-confidence fields, OcrWarnings, and read-only source.type field.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-011",
+      "title": "Implement OCR flow page with step state machine",
+      "description": "Create +page.svelte for /recipes/ocr with runes-based step state (upload -> processing -> review/error). Wire image upload to POST /api/v1/recipes/ocr via multipart/form-data, handle success (show OcrReview) and failure (show OcrError). Implement AbortController for cancellation.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-012",
+      "title": "Implement save flow with attestation and discard flow",
+      "description": "Wire Save button to open AttestationModal, then POST /api/v1/recipes with source.type='ocr' and attestation data. On success, toast and redirect to /recipes/[slug]. Implement Discard button with ConfirmDialog if edits were made.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-013",
+      "title": "Add auth guard to OCR route",
+      "description": "Create +page.server.ts for /recipes/ocr that redirects unauthenticated users to /auth/login.",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "OF-014",
+      "title": "Write tests for OCR flow",
+      "description": "Test image upload validation (type, size, empty), drag-and-drop interaction, camera capture button visibility, processing state (cancel button, timeout message), error display for each error code, confidence banner levels, raw text panel toggle, attestation modal (radio selection, disabled save), save flow with attestation, discard flow with dirty check, and accessibility (aria-live, focus trap, role=alert).",
+      "spec": "specs/ocr-flow.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
