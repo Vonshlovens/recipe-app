@@ -80,6 +80,86 @@
       "spec": "specs/recipe-data-model.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "DB-001",
+      "title": "Set up SQLite database connection",
+      "description": "Initialize SQLite database using Deno's SQLite module. Create the database file and connection utility with proper error handling.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-002",
+      "title": "Create migration runner",
+      "description": "Build a lightweight migration runner that tracks applied migrations in a _migrations table, applies unapplied migrations in order on startup, and runs each migration in a transaction.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-003",
+      "title": "Write initial schema migrations",
+      "description": "Create the sequential migration SQL files: 001_create_recipes.sql (recipes table with all columns and constraints), 002_create_recipe_tags.sql (normalized tags table), 003_create_fts.sql (FTS5 virtual table).",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-004",
+      "title": "Create index migrations",
+      "description": "Write migration for standard indexes: slug uniqueness, created_at, updated_at, difficulty, and tag query indexes (group+value composite, value-only).",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-005",
+      "title": "Implement recipe write path (insert/update)",
+      "description": "Build the transactional write path: insert/update recipes row, delete and re-insert recipe_tags, and update the FTS index — all within a single transaction.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-006",
+      "title": "Implement recipe read queries",
+      "description": "Build query functions for: get recipe by slug, get recipe by ID, list recipes with pagination and sorting (by created_at, updated_at).",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "DB-007",
+      "title": "Implement tag-based query functions",
+      "description": "Build AND, OR, and NOT tag query functions using INTERSECT/UNION/NOT IN patterns against the recipe_tags table.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "DB-008",
+      "title": "Implement full-text search query",
+      "description": "Build a search function using the FTS5 virtual table to search recipe titles and body content, returning results ranked by relevance.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "DB-009",
+      "title": "Implement re-index operation",
+      "description": "Build a re-index command that reads the document column for all recipes, re-parses frontmatter/body, and rebuilds extracted columns, recipe_tags, and FTS index.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "low"
+    },
+    {
+      "id": "DB-010",
+      "title": "Write unit tests for database layer",
+      "description": "Test migration runner, recipe CRUD operations, tag queries (AND/OR/NOT), full-text search, constraint enforcement, and transactional integrity.",
+      "spec": "specs/database.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }
