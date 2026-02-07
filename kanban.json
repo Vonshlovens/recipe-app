@@ -1752,6 +1752,94 @@
       "spec": "specs/recommendations-ui.md",
       "column": "backlog",
       "priority": "high"
+    },
+    {
+      "id": "MOB-001",
+      "title": "Create PWA manifest and icon set",
+      "description": "Create static/manifest.json with app name, theme color, display mode, and icon references. Generate icon-192, icon-512, and icon-maskable-512 PNG files in static/icons/.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-002",
+      "title": "Set up service worker with @vite-pwa/sveltekit",
+      "description": "Install and configure @vite-pwa/sveltekit. Set up precaching for app shell assets and runtime caching strategies: network-first for API responses (24h), cache-first for images (7d) and static assets (30d).",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-003",
+      "title": "Implement offline shopping list with IndexedDB",
+      "description": "Persist the current shopping list and check-off state to IndexedDB after generation. Enable full shopping list functionality without network. Sync state on reconnect.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-004",
+      "title": "Implement offline indicator banner",
+      "description": "Show a dismissible banner when navigator.onLine is false. Listen to online/offline window events and auto-hide on reconnect.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-005",
+      "title": "Implement background sync for queued saves",
+      "description": "Queue failed recipe save requests in IndexedDB. On reconnect, replay queued requests using the Background Sync API. Show toast on successful sync. Limit queue to 10 pending operations.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "MOB-006",
+      "title": "Build bottom navigation bar for mobile",
+      "description": "Create a fixed bottom navigation bar visible on mobile (<768px) with icon+label items for Recipes, Search, Shopping List, and OCR. Highlight active route. Handle safe area insets for notched devices.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-007",
+      "title": "Add viewport meta tags and safe area CSS",
+      "description": "Add viewport-fit=cover, apple-mobile-web-app-capable, and status-bar-style meta tags to app.html. Add env(safe-area-inset-*) CSS rules for bottom nav and page content.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "MOB-008",
+      "title": "Implement A2HS install prompt",
+      "description": "Listen for beforeinstallprompt event, show a custom install banner after 3+ page visits. Persist dismissal in localStorage for 30 days. Show manual iOS instructions when beforeinstallprompt is unavailable.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "MOB-009",
+      "title": "Audit and enforce touch target sizing",
+      "description": "Audit all interactive elements for 44x44px minimum touch targets per WCAG 2.5.8. Ensure 8px minimum spacing between interactive elements. Fix any non-compliant buttons, checkboxes, and links.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "MOB-010",
+      "title": "Add responsive images with srcset",
+      "description": "Add srcset attributes with 320w, 640w, and 960w image sizes to recipe images. Add loading=lazy and decoding=async attributes for performance.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "MOB-011",
+      "title": "Write tests for mobile and PWA features",
+      "description": "Test PWA install flow, offline recipe viewing after caching, offline shopping list check-off, camera capture for OCR, bottom navigation routing, touch target compliance, safe area rendering, background sync, and Lighthouse performance budget.",
+      "spec": "specs/mobile-strategy.md",
+      "column": "backlog",
+      "priority": "high"
     }
   ]
 }

@@ -40,7 +40,7 @@ All specs listed below are **not yet implemented**. Each entry represents a `.md
 
 ### Mobile
 
-- [ ] `specs/mobile-strategy.md` — Approach (PWA vs native wrapper vs responsive-only), offline support, camera access for OCR, mobile-specific UX considerations
+- [x] `specs/mobile-strategy.md` — Approach (PWA vs native wrapper vs responsive-only), offline support, camera access for OCR, mobile-specific UX considerations
 
 ### Cross-Cutting
 
