@@ -2624,6 +2624,94 @@
       "spec": "specs/feature-collections.md",
       "column": "backlog",
       "priority": "medium"
+    },
+    {
+      "id": "FUP-001",
+      "title": "Create UserProfile database table and migration",
+      "description": "Add migration for user_profiles table (userId, displayName, avatarUrl, dietaryPreferences JSON array, defaultServings, measurementPreference, createdAt, updatedAt). Add index on userId.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-002",
+      "title": "Define UserProfile TypeScript types",
+      "description": "Create TypeScript interface for UserProfile matching the data model in the spec, including the measurementPreference union type.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-003",
+      "title": "Implement GET and PATCH /api/v1/profile endpoints",
+      "description": "Build GET /api/v1/profile (return current user's profile) and PATCH /api/v1/profile (update displayName, dietaryPreferences, defaultServings, measurementPreference). Validate all fields per spec. Require auth.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-004",
+      "title": "Implement avatar upload and deletion endpoints",
+      "description": "Build POST /api/v1/profile/avatar (multipart/form-data upload, validate image type and size, resize to 256x256 WebP) and DELETE /api/v1/profile/avatar (revert to generated default). Rate limit to 10 uploads per hour.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FUP-005",
+      "title": "Implement default avatar generation",
+      "description": "Generate a default avatar from the user's initials with a deterministic background color derived from the userId. Serve as SVG or pre-rendered PNG.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FUP-006",
+      "title": "Implement account settings endpoints (email, password, delete)",
+      "description": "Build PATCH /api/v1/account/email (send verification to new email), PATCH /api/v1/account/password (require current password), DELETE /api/v1/account (require 'DELETE' confirmation string, async cleanup). Rate limit to 5 changes per hour.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-007",
+      "title": "Build profile settings page UI",
+      "description": "Create /settings/profile page with form fields for display name, avatar upload with preview and crop, dietary preference checkboxes grouped with aria-label, default servings input, and measurement preference radio group.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-008",
+      "title": "Build account settings page UI",
+      "description": "Create /settings/account page with email change form (shows verification notice), password change form (current + new password fields), and account deletion section with confirmation dialog requiring 'DELETE' input.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "high"
+    },
+    {
+      "id": "FUP-009",
+      "title": "Integrate dietary preferences with search and recommendations",
+      "description": "When dietary preferences are set, show 'Matches your diet' badge on compatible recipes in search results. Pass preferences to recommendation engine as a filtering signal.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FUP-010",
+      "title": "Integrate default servings with recipe viewer",
+      "description": "When a user has default servings set, initialize the recipe viewer's serving scaler to the user's default instead of the recipe's original value.",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "medium"
+    },
+    {
+      "id": "FUP-011",
+      "title": "Write tests for user profile feature",
+      "description": "Test profile CRUD, avatar upload/delete/validation, dietary preference storage, default servings integration, measurement preference, email change with verification, password change requiring current password, account deletion with confirmation, rate limiting, and accessibility (label associations, grouped checkboxes, focus trapping).",
+      "spec": "specs/feature-user-profile.md",
+      "column": "backlog",
+      "priority": "medium"
     }
   ]
 }
