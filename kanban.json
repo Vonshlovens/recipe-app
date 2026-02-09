@@ -54,7 +54,7 @@
       "title": "Implement slug generation with collision avoidance",
       "description": "Generate URL-safe slugs from recipe titles. Handle collisions by appending -2, -3, etc. Regenerate slug on title change.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "medium"
     },
     {
@@ -70,7 +70,7 @@
       "title": "Define tag taxonomy constants and validation",
       "description": "Create constants for built-in tag groups (cuisine, meal, diet, technique, custom) and validate tag values against the regex /^[a-z0-9-]{1,50}$/ with max 20 tags per group.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "medium"
     },
     {
@@ -78,7 +78,7 @@
       "title": "Write unit tests for recipe data model",
       "description": "Test parsing, serialization, validation (valid and invalid cases), slug generation, on-save logic, and tag validation.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {

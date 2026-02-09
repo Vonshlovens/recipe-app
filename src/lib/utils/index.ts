@@ -6,5 +6,6 @@ export {
 	splitFrontmatter,
 } from "./frontmatter.ts";
 export type { RawFrontmatterDocument } from "./frontmatter.ts";
-export { validateFrontmatter } from "./validation.ts";
+export { validateFrontmatter, validateBody } from "./validation.ts";
 export type { ValidationError, ValidationResult } from "./validation.ts";
+export { generateSlug, generateUniqueSlug } from "./slug.ts";
