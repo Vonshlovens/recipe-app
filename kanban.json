@@ -38,7 +38,7 @@
       "title": "Implement frontmatter validation",
       "description": "Validate all frontmatter fields per spec: ULID format, title length, slug format, servings positivity, ISO 8601 durations, difficulty enum, source.type enum, tag format regex.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {
