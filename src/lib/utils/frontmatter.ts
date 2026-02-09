@@ -4,7 +4,7 @@
  * See: specs/recipe-data-model.md
  */
 
-import { parse as parseYaml } from "yaml";
+import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import type { Recipe, RecipeFrontmatter, RecipeTags } from "$lib/types";
 
 /** Result of splitting a document into frontmatter and body. */
@@ -147,4 +147,74 @@ export function parseRecipeDocument(document: string): Recipe {
 	const fm = extractFrontmatter(frontmatter);
 
 	return { ...fm, body };
+}
+
+/**
+ * Build a plain object from RecipeFrontmatter suitable for YAML serialization.
+ * Omits undefined optional fields so the output stays clean.
+ */
+function buildFrontmatterObject(fm: RecipeFrontmatter): Record<string, unknown> {
+	const obj: Record<string, unknown> = {
+		id: fm.id,
+		title: fm.title,
+		slug: fm.slug,
+	};
+
+	if (fm.author != null) obj.author = fm.author;
+
+	if (fm.source != null) {
+		const source: Record<string, unknown> = { type: fm.source.type };
+		if (fm.source.url != null) source.url = fm.source.url;
+		if (fm.source.importedAt != null) source.importedAt = fm.source.importedAt;
+		obj.source = source;
+	}
+
+	// Only emit tags if there are non-empty groups
+	const tags: Record<string, string[]> = {};
+	for (const [group, values] of Object.entries(fm.tags)) {
+		if (values && values.length > 0) {
+			tags[group] = values;
+		}
+	}
+	obj.tags = Object.keys(tags).length > 0 ? tags : {};
+
+	obj.servings = fm.servings.unit != null
+		? { default: fm.servings.default, unit: fm.servings.unit }
+		: { default: fm.servings.default };
+
+	if (fm.prepTime != null) obj.prepTime = fm.prepTime;
+	if (fm.cookTime != null) obj.cookTime = fm.cookTime;
+	if (fm.totalTime != null) obj.totalTime = fm.totalTime;
+	if (fm.difficulty != null) obj.difficulty = fm.difficulty;
+	if (fm.image != null) obj.image = fm.image;
+
+	obj.createdAt = fm.createdAt;
+	obj.updatedAt = fm.updatedAt;
+
+	return obj;
+}
+
+/**
+ * Serialize a Recipe object into a Markdown document with YAML frontmatter.
+ * This is the inverse of parseRecipeDocument.
+ *
+ * The output follows the canonical format:
+ * ```
+ * ---
+ * <YAML frontmatter>
+ * ---
+ *
+ * <Markdown body>
+ * ```
+ */
+export function serializeRecipeDocument(recipe: Recipe): string {
+	const { body, ...fm } = recipe;
+	const obj = buildFrontmatterObject(fm);
+	const yaml = stringifyYaml(obj, { lineWidth: 0 });
+
+	const parts = ["---\n", yaml, "---\n"];
+	if (body) {
+		parts.push("\n", body, "\n");
+	}
+	return parts.join("");
 }

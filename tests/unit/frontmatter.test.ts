@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
 	FrontmatterParseError,
 	parseRecipeDocument,
+	serializeRecipeDocument,
 	splitFrontmatter,
 } from "$lib/utils/frontmatter.ts";
+import type { Recipe } from "$lib/types";
 
 const FULL_DOCUMENT = `---
 id: "01J5KEXAMPLE000000000ABCDE"
@@ -332,5 +334,196 @@ Body`;
 		expect(() => parseRecipeDocument("no frontmatter here")).toThrow(
 			FrontmatterParseError,
 		);
+	});
+});
+
+const FULL_RECIPE: Recipe = {
+	id: "01J5KEXAMPLE000000000ABCDE",
+	title: "Crispy Chickpea Bowl",
+	slug: "crispy-chickpea-bowl",
+	author: "Jane Doe",
+	source: {
+		type: "import",
+		url: "https://example.com/recipe/chickpea-bowl",
+		importedAt: "2026-01-15T10:30:00Z",
+	},
+	tags: {
+		cuisine: ["mediterranean"],
+		meal: ["lunch", "dinner"],
+		diet: ["vegan", "gluten-free"],
+		technique: ["roasting"],
+		custom: ["meal-prep", "quick"],
+	},
+	servings: { default: 4, unit: "bowls" },
+	prepTime: "PT15M",
+	cookTime: "PT25M",
+	totalTime: "PT40M",
+	difficulty: "easy",
+	createdAt: "2026-01-15T10:30:00Z",
+	updatedAt: "2026-01-15T10:30:00Z",
+	body: "## Ingredients\n\n- 2 cans chickpeas\n- 2 tbsp olive oil\n\n## Instructions\n\n1. Preheat oven to 425°F.\n2. Roast chickpeas for 25 minutes.",
+};
+
+const MINIMAL_RECIPE: Recipe = {
+	id: "01J5KEXAMPLE000000000ABCDE",
+	title: "Simple Toast",
+	slug: "simple-toast",
+	tags: {},
+	servings: { default: 1 },
+	createdAt: "2026-01-15T10:30:00Z",
+	updatedAt: "2026-01-15T10:30:00Z",
+	body: "## Ingredients\n\n- 1 slice bread\n\n## Instructions\n\n1. Toast the bread.",
+};
+
+describe("serializeRecipeDocument", () => {
+	it("serializes a full recipe to a valid document", () => {
+		const doc = serializeRecipeDocument(FULL_RECIPE);
+
+		expect(doc).toContain("---\n");
+		expect(doc).toContain("title: Crispy Chickpea Bowl\n");
+		expect(doc).toContain("slug: crispy-chickpea-bowl\n");
+		expect(doc).toContain("author: Jane Doe\n");
+		expect(doc).toContain("## Ingredients");
+		expect(doc).toContain("## Instructions");
+	});
+
+	it("serializes a minimal recipe without optional fields", () => {
+		const doc = serializeRecipeDocument(MINIMAL_RECIPE);
+
+		expect(doc).toContain("title: Simple Toast\n");
+		expect(doc).not.toContain("author:");
+		expect(doc).not.toContain("source:");
+		expect(doc).not.toContain("prepTime:");
+		expect(doc).not.toContain("cookTime:");
+		expect(doc).not.toContain("totalTime:");
+		expect(doc).not.toContain("difficulty:");
+		expect(doc).not.toContain("image:");
+	});
+
+	it("round-trips a full recipe (serialize then parse)", () => {
+		const doc = serializeRecipeDocument(FULL_RECIPE);
+		const parsed = parseRecipeDocument(doc);
+
+		expect(parsed.id).toBe(FULL_RECIPE.id);
+		expect(parsed.title).toBe(FULL_RECIPE.title);
+		expect(parsed.slug).toBe(FULL_RECIPE.slug);
+		expect(parsed.author).toBe(FULL_RECIPE.author);
+		expect(parsed.source).toEqual(FULL_RECIPE.source);
+		expect(parsed.tags).toEqual(FULL_RECIPE.tags);
+		expect(parsed.servings).toEqual(FULL_RECIPE.servings);
+		expect(parsed.prepTime).toBe(FULL_RECIPE.prepTime);
+		expect(parsed.cookTime).toBe(FULL_RECIPE.cookTime);
+		expect(parsed.totalTime).toBe(FULL_RECIPE.totalTime);
+		expect(parsed.difficulty).toBe(FULL_RECIPE.difficulty);
+		expect(parsed.createdAt).toBe(FULL_RECIPE.createdAt);
+		expect(parsed.updatedAt).toBe(FULL_RECIPE.updatedAt);
+		expect(parsed.body).toBe(FULL_RECIPE.body);
+	});
+
+	it("round-trips a minimal recipe", () => {
+		const doc = serializeRecipeDocument(MINIMAL_RECIPE);
+		const parsed = parseRecipeDocument(doc);
+
+		expect(parsed.id).toBe(MINIMAL_RECIPE.id);
+		expect(parsed.title).toBe(MINIMAL_RECIPE.title);
+		expect(parsed.slug).toBe(MINIMAL_RECIPE.slug);
+		expect(parsed.tags).toEqual({});
+		expect(parsed.servings).toEqual({ default: 1 });
+		expect(parsed.author).toBeUndefined();
+		expect(parsed.source).toBeUndefined();
+		expect(parsed.body).toBe(MINIMAL_RECIPE.body);
+	});
+
+	it("round-trips a parsed document (parse then serialize then parse)", () => {
+		const original = parseRecipeDocument(FULL_DOCUMENT);
+		const serialized = serializeRecipeDocument(original);
+		const reparsed = parseRecipeDocument(serialized);
+
+		expect(reparsed.id).toBe(original.id);
+		expect(reparsed.title).toBe(original.title);
+		expect(reparsed.slug).toBe(original.slug);
+		expect(reparsed.author).toBe(original.author);
+		expect(reparsed.source).toEqual(original.source);
+		expect(reparsed.tags).toEqual(original.tags);
+		expect(reparsed.servings).toEqual(original.servings);
+		expect(reparsed.prepTime).toBe(original.prepTime);
+		expect(reparsed.cookTime).toBe(original.cookTime);
+		expect(reparsed.totalTime).toBe(original.totalTime);
+		expect(reparsed.difficulty).toBe(original.difficulty);
+		expect(reparsed.body).toBe(original.body);
+	});
+
+	it("includes source fields correctly", () => {
+		const doc = serializeRecipeDocument(FULL_RECIPE);
+
+		expect(doc).toContain("type: import");
+		expect(doc).toContain("url: https://example.com/recipe/chickpea-bowl");
+		expect(doc).toContain("importedAt:");
+	});
+
+	it("serializes source with only type (no url or importedAt)", () => {
+		const recipe: Recipe = {
+			...MINIMAL_RECIPE,
+			source: { type: "manual" },
+		};
+		const doc = serializeRecipeDocument(recipe);
+
+		expect(doc).toContain("type: manual");
+		expect(doc).not.toMatch(/url:/);
+		expect(doc).not.toMatch(/importedAt:/);
+	});
+
+	it("serializes servings with unit", () => {
+		const doc = serializeRecipeDocument(FULL_RECIPE);
+		expect(doc).toContain("default: 4");
+		expect(doc).toContain("unit: bowls");
+	});
+
+	it("serializes servings without unit", () => {
+		const doc = serializeRecipeDocument(MINIMAL_RECIPE);
+		expect(doc).toContain("default: 1");
+		expect(doc).not.toMatch(/unit:/);
+	});
+
+	it("serializes tags as flow arrays", () => {
+		const doc = serializeRecipeDocument(FULL_RECIPE);
+		expect(doc).toContain("cuisine:");
+		expect(doc).toContain("mediterranean");
+		expect(doc).toContain("meal:");
+	});
+
+	it("serializes empty tags as empty object", () => {
+		const doc = serializeRecipeDocument(MINIMAL_RECIPE);
+		expect(doc).toContain("tags: {}");
+	});
+
+	it("omits tag groups with empty arrays", () => {
+		const recipe: Recipe = {
+			...MINIMAL_RECIPE,
+			tags: { cuisine: [], meal: ["lunch"] },
+		};
+		const doc = serializeRecipeDocument(recipe);
+
+		expect(doc).not.toContain("cuisine:");
+		expect(doc).toContain("meal:");
+	});
+
+	it("serializes image field when present", () => {
+		const recipe: Recipe = {
+			...MINIMAL_RECIPE,
+			image: "/images/toast.jpg",
+		};
+		const doc = serializeRecipeDocument(recipe);
+		expect(doc).toContain("image: /images/toast.jpg");
+	});
+
+	it("handles empty body", () => {
+		const recipe: Recipe = { ...MINIMAL_RECIPE, body: "" };
+		const doc = serializeRecipeDocument(recipe);
+
+		expect(doc.endsWith("---\n")).toBe(true);
+		// Should still be parseable
+		const parsed = parseRecipeDocument(doc);
+		expect(parsed.body).toBe("");
 	});
 });

@@ -30,7 +30,7 @@
       "title": "Build YAML frontmatter serializer",
       "description": "Serialize a Recipe object back into a Markdown file with YAML frontmatter.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {
