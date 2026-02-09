@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "verbatimModuleSyntax": true
+  },
+  "tasks": {
+    "dev": "deno run -A npm:vite dev",
+    "build": "deno run -A npm:vite build",
+    "preview": "deno run -A npm:vite preview",
+    "check": "deno run -A npm:svelte-kit sync && deno run -A npm:svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "deno run -A npm:svelte-kit sync && deno run -A npm:svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "test": "deno run -A npm:vitest run",
+    "test:watch": "deno run -A npm:vitest",
+    "db:generate": "deno run -A npm:drizzle-kit generate",
+    "db:migrate": "deno run -A npm:drizzle-kit migrate",
+    "db:studio": "deno run -A npm:drizzle-kit studio"
+  },
+  "imports": {
+    "$lib": "./src/lib",
+    "$lib/*": "./src/lib/*"
+  },
+  "fmt": {},
+  "lint": {
+    "include": ["src/**/*.ts", "src/**/*.js"],
+    "exclude": ["node_modules", ".svelte-kit", ".deno-deploy", "build"]
+  },
+  "nodeModulesDir": "auto",
+  "unstable": ["fmt-component"]
+}
