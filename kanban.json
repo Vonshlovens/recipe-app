@@ -6,7 +6,7 @@
       "title": "Define recipe TypeScript types from schema",
       "description": "Create TypeScript interfaces/types for the full recipe schema: Recipe, RecipeSource, RecipeTags, Servings, and related types.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {
