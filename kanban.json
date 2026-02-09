@@ -62,7 +62,7 @@
       "title": "Implement on-save logic (updatedAt, totalTime calc)",
       "description": "On save: set updatedAt to current time, recalculate totalTime from prepTime + cookTime if both present and totalTime not explicitly set.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "medium"
     },
     {
