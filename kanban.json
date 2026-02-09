@@ -83,40 +83,40 @@
     },
     {
       "id": "DB-001",
-      "title": "Set up SQLite database connection",
-      "description": "Initialize SQLite database using Deno's SQLite module. Create the database file and connection utility with proper error handling.",
-      "spec": "specs/database.md",
-      "column": "backlog",
+      "title": "Set up Postgres database connection with Drizzle ORM",
+      "description": "Install Drizzle ORM and Neon serverless driver. Define Drizzle schema for recipes and recipe_tags tables. Create database client singleton using neon-http adapter. Configure drizzle-kit for migrations.",
+      "spec": "specs/tech-stack.md",
+      "column": "done",
       "priority": "high"
     },
     {
       "id": "DB-002",
-      "title": "Create migration runner",
-      "description": "Build a lightweight migration runner that tracks applied migrations in a _migrations table, applies unapplied migrations in order on startup, and runs each migration in a transaction.",
-      "spec": "specs/database.md",
+      "title": "Generate and run initial Drizzle migrations",
+      "description": "Use drizzle-kit generate to create the initial migration from the Drizzle schema (recipes + recipe_tags tables). Run drizzle-kit migrate against a Neon database to apply. Verify tables are created correctly.",
+      "spec": "specs/tech-stack.md",
       "column": "backlog",
       "priority": "high"
     },
     {
       "id": "DB-003",
-      "title": "Write initial schema migrations",
-      "description": "Create the sequential migration SQL files: 001_create_recipes.sql (recipes table with all columns and constraints), 002_create_recipe_tags.sql (normalized tags table), 003_create_fts.sql (FTS5 virtual table).",
-      "spec": "specs/database.md",
+      "title": "Add full-text search support with tsvector",
+      "description": "Add a tsvector column to the recipes table with a GIN index for full-text search. Create a custom migration to add the tsvector column and trigger to auto-update it on insert/update. Use ts_rank for relevance ranking.",
+      "spec": "specs/tech-stack.md",
       "column": "backlog",
       "priority": "high"
     },
     {
       "id": "DB-004",
-      "title": "Create index migrations",
-      "description": "Write migration for standard indexes: slug uniqueness, created_at, updated_at, difficulty, and tag query indexes (group+value composite, value-only).",
-      "spec": "specs/database.md",
-      "column": "backlog",
+      "title": "Define indexes in Drizzle schema",
+      "description": "Indexes for slug uniqueness, created_at, updated_at, difficulty, and tag query indexes (group+value composite, value-only) are defined inline in the Drizzle schema (schema.ts).",
+      "spec": "specs/tech-stack.md",
+      "column": "done",
       "priority": "high"
     },
     {
       "id": "DB-005",
       "title": "Implement recipe write path (insert/update)",
-      "description": "Build the transactional write path: insert/update recipes row, delete and re-insert recipe_tags, and update the FTS index — all within a single transaction.",
+      "description": "Build the transactional write path using Drizzle: insert/update recipes row, delete and re-insert recipe_tags, and update the tsvector — all within a single transaction using Drizzle's transaction API.",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "high"
@@ -124,7 +124,7 @@
     {
       "id": "DB-006",
       "title": "Implement recipe read queries",
-      "description": "Build query functions for: get recipe by slug, get recipe by ID, list recipes with pagination and sorting (by created_at, updated_at).",
+      "description": "Build Drizzle query functions for: get recipe by slug, get recipe by ID, list recipes with pagination and sorting (by created_at, updated_at).",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "high"
@@ -132,7 +132,7 @@
     {
       "id": "DB-007",
       "title": "Implement tag-based query functions",
-      "description": "Build AND, OR, and NOT tag query functions using INTERSECT/UNION/NOT IN patterns against the recipe_tags table.",
+      "description": "Build AND, OR, and NOT tag query functions using Drizzle query builder with INTERSECT/UNION/NOT IN patterns against the recipe_tags table.",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "medium"
@@ -140,7 +140,7 @@
     {
       "id": "DB-008",
       "title": "Implement full-text search query",
-      "description": "Build a search function using the FTS5 virtual table to search recipe titles and body content, returning results ranked by relevance.",
+      "description": "Build a search function using PostgreSQL tsvector/ts_rank to search recipe titles and body content, returning results ranked by relevance. Use Drizzle's raw SQL support for FTS operations.",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "medium"
@@ -148,7 +148,7 @@
     {
       "id": "DB-009",
       "title": "Implement re-index operation",
-      "description": "Build a re-index command that reads the document column for all recipes, re-parses frontmatter/body, and rebuilds extracted columns, recipe_tags, and FTS index.",
+      "description": "Build a re-index command that reads the document column for all recipes, re-parses frontmatter/body, and rebuilds extracted columns, recipe_tags, and tsvector index.",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "low"
@@ -156,7 +156,7 @@
     {
       "id": "DB-010",
       "title": "Write unit tests for database layer",
-      "description": "Test migration runner, recipe CRUD operations, tag queries (AND/OR/NOT), full-text search, constraint enforcement, and transactional integrity.",
+      "description": "Test recipe CRUD operations via Drizzle, tag queries (AND/OR/NOT), full-text search with tsvector, constraint enforcement, and transactional integrity. Use a Neon branch or local Postgres for test isolation.",
       "spec": "specs/database.md",
       "column": "backlog",
       "priority": "high"
