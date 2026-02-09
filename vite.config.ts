@@ -4,4 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [tailwindcss(), sveltekit()],
+  test: {
+    include: ["tests/**/*.test.ts"],
+  },
 });

@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "dependencies": {
+    "ulid": "^3.0.2"
+  },
   "devDependencies": {
     "@deno/svelte-adapter": "^0.1.1",
     "@sveltejs/kit": "^2.50.2",

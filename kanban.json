@@ -14,7 +14,7 @@
       "title": "Implement ULID generation for recipe IDs",
       "description": "Add ULID dependency and create a utility for generating recipe IDs.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {
