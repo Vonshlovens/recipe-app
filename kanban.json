@@ -22,7 +22,7 @@
       "title": "Build YAML frontmatter parser",
       "description": "Parse Markdown files with YAML frontmatter into structured Recipe objects. Handle the frontmatter/body split.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "high"
     },
     {

@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "ulid": "^3.0.2"
+    "ulid": "^3.0.2",
+    "yaml": "^2.8.2"
   },
   "devDependencies": {
     "@deno/svelte-adapter": "^0.1.1",
