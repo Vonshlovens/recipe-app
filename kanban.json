@@ -46,7 +46,7 @@
       "title": "Implement Markdown body validation",
       "description": "Validate that the body contains required ## Ingredients and ## Instructions sections with at least one list item each, and that total body size is under 50,000 characters.",
       "spec": "specs/recipe-data-model.md",
-      "column": "backlog",
+      "column": "done",
       "priority": "medium"
     },
     {

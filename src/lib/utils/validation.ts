@@ -9,6 +9,7 @@
 import type { RecipeFrontmatter, RecipeSource, RecipeTags, Servings } from "$lib/types";
 import {
 	DIFFICULTIES,
+	MAX_BODY_LENGTH,
 	MAX_SLUG_LENGTH,
 	MAX_TAGS_PER_GROUP,
 	MAX_TITLE_LENGTH,
@@ -166,4 +167,98 @@ function validateTags(tags: RecipeTags, errors: ValidationError[]): void {
 			}
 		}
 	}
+}
+
+// --- Body Validation ---
+
+/**
+ * Regex to match a Markdown h2 heading.
+ * Captures the heading text (trimmed).
+ */
+const H2_REGEX = /^##\s+(.+)$/;
+
+/**
+ * Regex to match a Markdown list item (ordered or unordered).
+ * Matches lines starting with `- `, `* `, `+ `, or `1. ` (any number).
+ */
+const LIST_ITEM_REGEX = /^(\s*[-*+]|\s*\d+\.)\s+/;
+
+/**
+ * Extract sections from a Markdown body.
+ * Returns a map of section heading → array of content lines under that heading.
+ */
+function extractSections(body: string): Map<string, string[]> {
+	const sections = new Map<string, string[]>();
+	let currentSection: string | null = null;
+
+	for (const line of body.split("\n")) {
+		const headingMatch = line.match(H2_REGEX);
+		if (headingMatch) {
+			currentSection = headingMatch[1].trim();
+			sections.set(currentSection, []);
+		} else if (currentSection != null) {
+			sections.get(currentSection)!.push(line);
+		}
+	}
+
+	return sections;
+}
+
+/**
+ * Check whether an array of lines contains at least one list item.
+ */
+function hasListItem(lines: string[]): boolean {
+	return lines.some((line) => LIST_ITEM_REGEX.test(line));
+}
+
+/**
+ * Validate the Markdown body of a recipe document.
+ *
+ * Rules (per spec § Body Validation):
+ * 1. Must contain an `## Ingredients` section with at least one list item
+ * 2. Must contain an `## Instructions` section with at least one list item
+ * 3. Total body size must not exceed 50,000 characters
+ */
+export function validateBody(body: string): ValidationResult {
+	const errors: ValidationError[] = [];
+
+	// Body length
+	if (body.length > MAX_BODY_LENGTH) {
+		errors.push({
+			field: "body",
+			message: `Must be at most ${MAX_BODY_LENGTH} characters (got ${body.length})`,
+		});
+	}
+
+	const sections = extractSections(body);
+
+	// ## Ingredients — required with at least one list item
+	const ingredientLines = sections.get("Ingredients");
+	if (!ingredientLines) {
+		errors.push({
+			field: "body",
+			message: "Must contain an ## Ingredients section",
+		});
+	} else if (!hasListItem(ingredientLines)) {
+		errors.push({
+			field: "body.ingredients",
+			message: "## Ingredients section must contain at least one list item",
+		});
+	}
+
+	// ## Instructions — required with at least one list item
+	const instructionLines = sections.get("Instructions");
+	if (!instructionLines) {
+		errors.push({
+			field: "body",
+			message: "Must contain an ## Instructions section",
+		});
+	} else if (!hasListItem(instructionLines)) {
+		errors.push({
+			field: "body.instructions",
+			message: "## Instructions section must contain at least one list item",
+		});
+	}
+
+	return { valid: errors.length === 0, errors };
 }
